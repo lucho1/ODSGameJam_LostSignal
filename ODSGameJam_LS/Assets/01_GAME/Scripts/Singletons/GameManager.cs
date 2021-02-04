@@ -57,7 +57,7 @@ public class GameManager : Singleton<GameManager>
     }
 
     [SerializeField]
-    private int m_currentDebt = GameOptions.OwedResources;
+    private int m_currentDebt = 0;
     public static int CurrentDebt {
         get {
             return Instance.m_currentDebt;
