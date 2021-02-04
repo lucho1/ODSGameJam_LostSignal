@@ -15,22 +15,29 @@ public class Factory : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        myPlanet = gameObject.GetComponent<PlanetScript>();
+        myPlanet = gameObject.GetComponentInParent<PlanetScript>();
         m_nextResourceTime = Time.time + GameOptions.ResourceRefreshRate;
         m_nextContaminationTime = Time.time + GameOptions.PollutionRefreshRate;
+
     }
 
     // Update is called once per frame
     void Update()
     {
         if (Time.time >= m_nextContaminationTime) {
-            m_nextContaminationTime = Time.time + GameOptions.PollutionRefreshRate;
+            if (EcoFactory)
+                m_nextContaminationTime = Time.time + GameOptions.EcoFactoryContamination;
+            else
+                m_nextContaminationTime = Time.time + GameOptions.StandardFactoryContamination;
             myPlanet.currentHealth -= GameOptions.StandardFactoryContamination;
         }
 
         if (Time.time >= m_nextResourceTime) {
             m_nextResourceTime = Time.time + GameOptions.PollutionRefreshRate;
-            // Add resources here
+            if (EcoFactory)
+                ResourcesManager.AddResources(GameOptions.EcoFactoryProduction, myPlanet.PlanetId);
+            else
+                ResourcesManager.AddResources(GameOptions.StandardFactoryProduction, myPlanet.PlanetId);
         }
     }
 }

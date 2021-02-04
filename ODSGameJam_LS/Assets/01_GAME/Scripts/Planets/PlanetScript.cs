@@ -33,6 +33,9 @@ public class PlanetScript : MonoBehaviour
     public GameObject CameraPosition;
     private bool cameraAttached = false;
 
+    [System.NonSerialized]
+    public int PlanetId;
+
     //UI
     public GameObject healthIndicator;
     private Image healthImage;

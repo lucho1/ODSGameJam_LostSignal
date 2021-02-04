@@ -188,4 +188,26 @@ public class GameOptions : ScriptableObject
             Instance.m_pollutionRefreshRate = value;
         }
     }
+
+    [SerializeField]
+    private int m_ecoFactoryProduction;
+    public static int EcoFactoryProduction {
+        get {
+            return Instance.m_ecoFactoryProduction;
+        }
+        set {
+            Instance.m_ecoFactoryProduction = value;
+        }
+    }
+
+    [SerializeField]
+    private int m_standardFactoryProduction;
+    public static int StandardFactoryProduction {
+        get {
+            return Instance.m_standardFactoryProduction;
+        }
+        set {
+            Instance.m_standardFactoryProduction = value;
+        }
+    }
 }
