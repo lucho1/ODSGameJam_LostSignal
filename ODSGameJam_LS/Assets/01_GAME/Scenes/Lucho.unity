@@ -460,6 +460,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f39f8170a44d244fac3997d89604853, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PosRange: 25
   InitialPlanet: {fileID: 495550414}
   PlanetPrefab: {fileID: 7412278056483163580, guid: 17dfb9a6684cf8d4db96c849836f453a,
     type: 3}
