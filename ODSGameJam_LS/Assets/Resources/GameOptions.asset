@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6df0e144bc6b8c48acca5da8b52f555, type: 3}
+  m_Name: GameOptions
+  m_EditorClassIdentifier: 
+  m_startingFunds: 50
+  m_owedResources: 20000
+  m_timerDuration: 120
+  m_increasedDebt: 500
+  m_payingAmount: 100
+  m_standardFactoryCost: 40
+  m_ecoFactoryCost: 3000
+  m_destructionCost: 20
+  m_planetCostIncrease: 1.5
