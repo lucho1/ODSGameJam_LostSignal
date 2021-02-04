@@ -21,3 +21,6 @@ MonoBehaviour:
   m_ecoFactoryCost: 3000
   m_destructionCost: 20
   m_planetCostIncrease: 1.5
+  m_standardFactoryContamination: 1.2
+  m_ecoFactoryContamination: 0.1
+  m_planetRegeneration: 1

@@ -1,15 +1,18 @@
 ﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class GameManager : Singleton<GameManager>
 {
     public enum TypeOfConstruction {
-        Factory = 0,
+        None = 0,
+        Factory,
         EcoFactory,
         Destroy
     }
 
     protected GameManager() {}
-    
+
+    [SerializeField]
     private List<PlanetScript> m_planetList;
     public static List<PlanetScript> PlanetList {
         get {
@@ -20,6 +23,7 @@ public class GameManager : Singleton<GameManager>
         }
     }
 
+    [SerializeField]
     private int m_currentResources;
     public static int CurrentResources {
         get {
@@ -30,7 +34,8 @@ public class GameManager : Singleton<GameManager>
         }
     }
 
-    private TypeOfConstruction m_selectedConstruction = TypeOfConstruction.Factory;
+    [SerializeField]
+    private TypeOfConstruction m_selectedConstruction = TypeOfConstruction.None;
     public static TypeOfConstruction SelectedConstruction {
         get {
             return Instance.m_selectedConstruction;
@@ -40,6 +45,7 @@ public class GameManager : Singleton<GameManager>
         }
     }
 
+    [SerializeField]
     private int m_currentPlanetIndex = 0;
     public static int CurrentPlanetIndex {
         get {
