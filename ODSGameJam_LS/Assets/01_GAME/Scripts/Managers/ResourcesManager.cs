@@ -43,4 +43,14 @@ public class ResourcesManager : Singleton<ResourcesManager>
     {
         Instance.resources = Instance.resources - amount;
     }
+
+    public static void SubstractDebt(int debt_amount)
+    {
+        GameManager.CurrentDebt -= debt_amount;
+    }
+
+    public static void AddDebt(int debt_amount)
+    {
+        GameManager.CurrentDebt += debt_amount;
+    }
 }

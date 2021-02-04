@@ -386,6 +386,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: HUDCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 7010791660957924644, guid: a806ac61320331a4a99e8cf186050dda,
+        type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7010791660957924644, guid: a806ac61320331a4a99e8cf186050dda,
+        type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 960
+      objectReference: {fileID: 0}
+    - target: {fileID: 7010791660957924644, guid: a806ac61320331a4a99e8cf186050dda,
+        type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 540
+      objectReference: {fileID: 0}
     - target: {fileID: 7010791660957924646, guid: a806ac61320331a4a99e8cf186050dda,
         type: 3}
       propertyPath: m_LocalPosition.x
