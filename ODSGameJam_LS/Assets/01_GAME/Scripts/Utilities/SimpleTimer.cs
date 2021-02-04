@@ -18,6 +18,7 @@ public class SimpleTimer
     {
         if (!Running)
             return;
+
         Running = false;
         StopTime = Time.time;
     }
@@ -26,6 +27,7 @@ public class SimpleTimer
     {
         if (Running)
             return;
+            
         m_FinishTime = Time.time + (m_FinishTime - StopTime);
         Running = true;
     }
