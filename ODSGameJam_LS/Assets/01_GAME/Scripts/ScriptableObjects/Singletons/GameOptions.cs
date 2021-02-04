@@ -135,6 +135,17 @@ public class GameOptions : ScriptableObject
     }
 
     [SerializeField]
+    private float m_planetEfficiencyIncrease;
+    public static float PlanetEfficiencyIncrease {
+        get {
+            return Instance.m_planetEfficiencyIncrease;
+        }
+        set {
+            Instance.m_planetEfficiencyIncrease = value;
+        }
+    }
+
+    [SerializeField]
     private float m_standardFactoryContamination;
     public static float StandardFactoryContamination {
         get {

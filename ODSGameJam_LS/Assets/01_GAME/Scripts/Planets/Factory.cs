@@ -39,7 +39,7 @@ public class Factory : MonoBehaviour
             myPlanet.currentHealth -= GameOptions.StandardFactoryContamination;
         }
 
-        float efficiency = myPlanet.currentHealth / 100.0f;
+        float efficiency = (myPlanet.currentHealth / 100.0f) * (1 + (myPlanet.PlanetId * GameOptions.PlanetEfficiencyIncrease));
 
         if (Time.time >= m_nextResourceTime)
         {
