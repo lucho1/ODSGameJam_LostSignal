@@ -29,17 +29,6 @@ public class ResourcesManager : Singleton<ResourcesManager>
    
     }
 
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown("space"))
-        {
-            int id = 0;
-            AddResources(110,id);
-        }
-    }
-
     void UpdateResources() //called every x frames
     {
         GameManager.CurrentResources = resources;

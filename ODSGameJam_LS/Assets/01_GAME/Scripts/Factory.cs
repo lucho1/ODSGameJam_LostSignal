@@ -7,7 +7,6 @@ public class Factory : MonoBehaviour
 
     public bool EcoFactory = false;
 
-    private float m_contaminationAmount = 0.0f;
     private float m_nextResourceTime = 0.0f;
     private float m_nextContaminationTime = 0.0f;
 
@@ -25,6 +24,8 @@ public class Factory : MonoBehaviour
     void Update()
     {
         if (Time.time >= m_nextContaminationTime) {
+            Debug.Log("Adding contamination");
+            m_nextContaminationTime = Time.time + GameOptions.PollutionRefreshRate;
             if (EcoFactory)
                 m_nextContaminationTime = Time.time + GameOptions.EcoFactoryContamination;
             else
@@ -33,7 +34,8 @@ public class Factory : MonoBehaviour
         }
 
         if (Time.time >= m_nextResourceTime) {
-            m_nextResourceTime = Time.time + GameOptions.PollutionRefreshRate;
+            Debug.Log("Adding score");
+            m_nextResourceTime = Time.time + GameOptions.ResourceRefreshRate;
             if (EcoFactory)
                 ResourcesManager.AddResources(GameOptions.EcoFactoryProduction, myPlanet.PlanetId);
             else
