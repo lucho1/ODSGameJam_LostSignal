@@ -26,20 +26,13 @@ public class PlanetManager : Singleton<PlanetManager>
     // Update is called once per frame
     void Update()
     {
-        // --- Planet Creation ---
-        if (Input.GetKeyDown(KeyCode.B))
-        {
-            CreatePlanet();
-        }
-
-
         // --- Planet Switch ---
         if (GameManager.PlanetList.Count > 1)
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.RightArrow))
                 SwitchPlanet();
 
-            if (Input.GetKeyDown(KeyCode.LeftControl))
+            if (Input.GetKeyDown(KeyCode.LeftArrow))
                 SwitchPlanet(false);
         }
     }
