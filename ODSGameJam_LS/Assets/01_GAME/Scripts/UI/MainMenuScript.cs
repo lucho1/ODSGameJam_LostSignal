@@ -9,7 +9,23 @@ public class MainMenuScript : MonoBehaviour
     [SerializeField]
     private GameObject CreditsObject;
 
+    [SerializeField]
+    private GameObject InstructionsObject;
+
+
     public void PlayButton()
+    {
+        MenuObject.SetActive(false);
+        InstructionsObject.SetActive(true);
+    }    
+
+    public void InstructionsReturnButton()
+    {
+        InstructionsObject.SetActive(false);
+        MenuObject.SetActive(true);
+    }
+
+    public void InstructionsPlayButton()
     {
         SceneManager.LoadScene("GameScene");
     }
