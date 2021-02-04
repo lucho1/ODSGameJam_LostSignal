@@ -19,7 +19,7 @@ public class PlanetManager : Singleton<PlanetManager>
     // Start is called before the first frame update
     void Start()
     {
-        (GameManager.PlanetList).Add(InitialPlanet);
+        //(GameManager.PlanetList).Add(InitialPlanet); //Sergi: Now done in Start of PlanetScript
         InitialPlanet.AttachCamera();
     }
 
@@ -32,7 +32,7 @@ public class PlanetManager : Singleton<PlanetManager>
             Vector3 planet_pos = new Vector3(Random.Range(-PosRange, PosRange), Random.Range(-PosRange, PosRange), Random.Range(-PosRange, PosRange));
             Vector3 planet_rot = new Vector3(Random.Range(0, 360), Random.Range(0, 360), Random.Range(0, 360));
 
-            (GameManager.PlanetList).Add(Instantiate(PlanetPrefab, planet_pos, Quaternion.Euler(planet_rot)).GetComponent<PlanetScript>());
+            Instantiate(PlanetPrefab, planet_pos, Quaternion.Euler(planet_rot)).GetComponent<PlanetScript>();
             SwitchPlanet();
         }
 
