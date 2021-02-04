@@ -8,12 +8,21 @@ public class PlanetHUDScript : MonoBehaviour
     [SerializeField]
     private Text ColonizedPlanetsText;
 
+
     [SerializeField]
-    private GameObject NextPlanetBtn, PrevPlanetBtn;
+    private GameObject NextPlanetBtn, PrevPlanetBtn, HealthIndicator;
+
+    private Image healthImage;
+    private Slider healthSlider;
+    private Text healthText;
 
     private void Start()
     {
         ColonizedPlanetsText.text = "Colonized Planets: " + GameManager.PlanetList.Count.ToString();
+
+        healthImage =   HealthIndicator.GetComponentInChildren<Image>();
+        healthSlider =  HealthIndicator.GetComponent<Slider>();
+        healthText =    HealthIndicator.GetComponentInChildren<Text>();
     }
 
     // Update is called once per frame
@@ -27,6 +36,7 @@ public class PlanetHUDScript : MonoBehaviour
                 PrevPlanetBtn.SetActive(true);
             }
         }
+        UpdateHealthIndicator();
     }
 
     public void NextPlanetButton()
@@ -43,5 +53,17 @@ public class PlanetHUDScript : MonoBehaviour
     {
         PlanetManager.CreatePlanet();
         ColonizedPlanetsText.text = "Colonized Planets: " + GameManager.PlanetList.Count.ToString();
+    }
+    public void UpdateHealthIndicator()
+    {
+        float planetHealth = GameManager.PlanetList[GameManager.CurrentPlanetIndex].currentHealth;
+
+        float h = planetHealth / 360;// h = 100 --> green ,  h =0 --> red
+
+        healthImage.color = Color.HSVToRGB(h, 1.0f, 1.0f);
+        healthText.color = Color.HSVToRGB(h, 1.0f, 1.0f);
+        healthSlider.value = planetHealth / 100;
+
+        healthText.text = "Health: " + planetHealth.ToString() + " %";
     }
 }
