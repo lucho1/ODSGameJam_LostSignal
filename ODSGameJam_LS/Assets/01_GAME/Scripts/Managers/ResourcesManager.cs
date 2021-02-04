@@ -52,10 +52,8 @@ public class ResourcesManager : Singleton<ResourcesManager>
     {
         Instance.resources = Instance.resources + amount;
 
-        Instance.PopUpScoreUIGameObject.DisplayNumber = amount;
-        Instance.PopUpScoreUIGameObject.changes = true;
-        // Instance.PopUpScoreUIGameObject.GetComponentInParent.planet_id;
-        //GameManager.PlanetList[planet_id];
+        GameManager.PlanetList[planet_id].UiScript.PopChanges(amount);
+       
     }
     public static void SubstractResources(int amount) //called from other scripts
     {
