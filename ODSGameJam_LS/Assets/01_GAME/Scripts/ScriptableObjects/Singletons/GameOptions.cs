@@ -155,4 +155,15 @@ public class GameOptions : ScriptableObject
             Instance.m_planetRegeneration = value;
         }
     }
+
+    [SerializeField]
+    private float m_refreshRate;
+    public static float RefreshRate {
+        get {
+            return Instance.m_refreshRate;
+        }
+        set {
+            Instance.m_refreshRate = value;
+        }
+    }
 }
