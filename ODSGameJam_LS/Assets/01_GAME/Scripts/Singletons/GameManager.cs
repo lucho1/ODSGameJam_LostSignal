@@ -56,6 +56,17 @@ public class GameManager : Singleton<GameManager>
         }
     }
 
+    [SerializeField]
+    private GameObject m_CurrentSelectedCell = null;
+    public static GameObject CurrentSelectedCell {
+        get {
+            return Instance.m_CurrentSelectedCell;
+        }
+        set {
+            Instance.m_CurrentSelectedCell = value;
+        }
+    }
+
     public static PlanetScript NextPlanet() {
         if (CurrentPlanetIndex == PlanetList.Count - 1)
             CurrentPlanetIndex = 0;
