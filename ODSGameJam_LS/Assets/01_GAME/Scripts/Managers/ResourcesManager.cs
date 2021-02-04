@@ -18,20 +18,17 @@ public class ResourcesManager : Singleton<ResourcesManager>
             return Instance.resources;
         }
     }
-    
-
-    public ResourcesUI PopUpScoreUIGameObject;
-    public float refreshRate = 0.5f;
 
     void Start()
     {
-        resources = GameOptions.StartingFunds;
+        Instance.resources = GameManager.CurrentResources = GameOptions.StartingFunds;
+        GameManager.CurrentDebt = GameOptions.OwedResources;
         InvokeRepeating("UpdateResources", 1.0f, GameOptions.RefreshRate);
     }
 
     void UpdateResources() //called every x frames
     {
-        GameManager.CurrentResources = resources;
+        GameManager.CurrentResources = Instance.resources;
     }
 
 
