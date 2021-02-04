@@ -5,8 +5,12 @@ using UnityEngine.UI;
 
 public class PlanetHUDScript : MonoBehaviour
 {
+    private BackTimer m_PayTime;
     [SerializeField]
-    private Text CurrentResources, ResourcesToPay;
+    private Button PayButtonBtn;
+
+    [SerializeField]
+    private Text PayTimerText, CurrentResources, ResourcesToPay;
 
     [SerializeField]
     private Text ColonizedPlanetsText;
@@ -18,9 +22,14 @@ public class PlanetHUDScript : MonoBehaviour
     private Slider healthSlider;
     private Text healthText;
 
+
     private void Start()
     {
         ColonizedPlanetsText.text = "Colonized Planets: " + GameManager.PlanetList.Count.ToString();
+
+        m_PayTime = GetComponent<BackTimer>();
+        m_PayTime.StartTime = GameOptions.TimerDuration;
+        m_PayTime.Begin();
 
         healthImage =   HealthIndicator.GetComponentInChildren<Image>();
         healthSlider =  HealthIndicator.GetComponent<Slider>();
@@ -30,9 +39,19 @@ public class PlanetHUDScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // --- Current Resources & Debt Text ---
+        // --- Pay Button ---
+        if (GameManager.CurrentResources >= GameOptions.PayingAmount)
+            PayButtonBtn.interactable = true;
+        else
+            PayButtonBtn.interactable = false;
+
+        // --- Current Resources & Debt Text + Timer ---
         CurrentResources.text = GameManager.CurrentResources.ToString();
         ResourcesToPay.text = GameManager.CurrentDebt.ToString();
+        PayTimerText.text = m_PayTime.GetTimeString();
+
+        if (m_PayTime.Finished)
+            m_PayTime.Begin();
 
         // --- Next/Prev Buttons ---
         if (!NextPlanetBtn.activeInHierarchy && !PrevPlanetBtn.activeInHierarchy)
@@ -46,6 +65,15 @@ public class PlanetHUDScript : MonoBehaviour
 
         // --- Health Bar ---
         UpdateHealthIndicator();
+    }
+
+    public void PayButton()
+    {
+        if (GameManager.CurrentResources >= GameOptions.PayingAmount)
+        {
+            ResourcesManager.SubstractDebt(GameOptions.PayingAmount);
+            ResourcesManager.SubstractResources(GameOptions.PayingAmount);
+        }
     }
 
     public void NextPlanetButton()
