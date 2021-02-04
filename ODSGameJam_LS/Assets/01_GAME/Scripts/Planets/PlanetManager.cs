@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlanetManager : Singleton<PlanetManager>
 {
     [SerializeField]
-    int PosRange = 25;
+    int PosRange = 500;
 
     [SerializeField]
     private PlanetScript InitialPlanet;
@@ -42,6 +42,12 @@ public class PlanetManager : Singleton<PlanetManager>
         float pos_range = Instance.PosRange;
         Vector3 planet_pos = new Vector3(Random.Range(-pos_range, pos_range), Random.Range(-pos_range, pos_range), Random.Range(-pos_range, pos_range));
         Vector3 planet_rot = new Vector3(Random.Range(0, 360), Random.Range(0, 360), Random.Range(0, 360));
+
+        foreach(PlanetScript planet in GameManager.PlanetList)
+        {
+            while(planet.GetComponent<SphereCollider>().bounds.Contains(planet_pos))
+                planet_pos = new Vector3(Random.Range(-pos_range, pos_range), Random.Range(-pos_range, pos_range), Random.Range(-pos_range, pos_range));
+        }
 
         Instantiate(Instance.PlanetPrefab, planet_pos, Quaternion.Euler(planet_rot)).GetComponent<PlanetScript>();
         SwitchPlanet();
