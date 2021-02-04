@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 [CreateAssetMenu(menuName = "Singletons/GameOptions")]
 public class GameOptions : ScriptableObject
@@ -56,6 +54,28 @@ public class GameOptions : ScriptableObject
         }
         set {
             Instance.m_timerDuration = value;
+        }
+    }
+
+    [SerializeField]
+    private int m_increasedDebt;
+    public static int IncreasedDebt {
+        get {
+            return Instance.m_increasedDebt;
+        }
+        set {
+            Instance.m_increasedDebt = value;
+        }
+    }
+
+    [SerializeField]
+    private int m_payingAmount;
+    public static int PayingAmount {
+        get {
+            return Instance.m_payingAmount;
+        }
+        set {
+            Instance.m_payingAmount = value;
         }
     }
 }
