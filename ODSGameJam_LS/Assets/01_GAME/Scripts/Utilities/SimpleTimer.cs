@@ -27,7 +27,7 @@ public class SimpleTimer
     {
         if (Running)
             return;
-            
+
         m_FinishTime = Time.time + (m_FinishTime - StopTime);
         Running = true;
     }
@@ -62,7 +62,13 @@ public class SimpleTimer
     }
 
     public bool Finished() {
-        return (m_FinishTime - Time.time) <= 0;
+        float TimeLeft = 0;
+        if (Running)
+            TimeLeft = m_FinishTime - Time.time;
+        else
+            TimeLeft = m_FinishTime - StopTime;
+
+        return TimeLeft <= 0;
     }
 
     public string GetTimeString()
