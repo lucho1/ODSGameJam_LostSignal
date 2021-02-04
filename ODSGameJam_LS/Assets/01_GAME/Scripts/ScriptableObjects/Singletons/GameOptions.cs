@@ -166,4 +166,26 @@ public class GameOptions : ScriptableObject
             Instance.m_refreshRate = value;
         }
     }
+
+    [SerializeField]
+    private float m_resourceRefreshRate;
+    public static float ResourceRefreshRate {
+        get {
+            return Instance.m_resourceRefreshRate;
+        }
+        set {
+            Instance.m_resourceRefreshRate = value;
+        }
+    }
+
+    [SerializeField]
+    private float m_pollutionRefreshRate;
+    public static float PollutionRefreshRate {
+        get {
+            return Instance.m_pollutionRefreshRate;
+        }
+        set {
+            Instance.m_pollutionRefreshRate = value;
+        }
+    }
 }
