@@ -13,7 +13,7 @@ public class GameManager : Singleton<GameManager>
     protected GameManager() {}
     
     [SerializeField]
-    private List<PlanetScript> m_planetList;
+    private List<PlanetScript> m_planetList = new List<PlanetScript>();
     public static List<PlanetScript> PlanetList {
         get {
             return Instance.m_planetList;
@@ -24,7 +24,7 @@ public class GameManager : Singleton<GameManager>
     }
 
     [SerializeField]
-    private int m_currentResources;
+    private int m_currentResources = 0;
     public static int CurrentResources {
         get {
             return Instance.m_currentResources;
