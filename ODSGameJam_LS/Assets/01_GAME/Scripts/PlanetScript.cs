@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlanetScript : MonoBehaviour
 {
+    public GameObject CameraPosition;
+
     private float m_PlanetContamination = 0;
 
     public void AddContamination(float quantity)
