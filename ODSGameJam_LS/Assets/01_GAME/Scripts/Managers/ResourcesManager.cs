@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-
+﻿
 /*
 
 This script is suposed to manage global data: Resources for example 
@@ -29,9 +25,8 @@ public class ResourcesManager : Singleton<ResourcesManager>
 
     void Start()
     {
+        resources = GameOptions.StartingFunds;
         InvokeRepeating("UpdateResources", 1.0f, GameOptions.RefreshRate);
-        resources = GameManager.CurrentResources;
-   
     }
 
     void UpdateResources() //called every x frames
@@ -40,20 +35,15 @@ public class ResourcesManager : Singleton<ResourcesManager>
     }
 
 
-    //USER FUNCTIONS
-
+    // USER FUNCTIONS
     public static void AddResources(int amount,int planet_id) //called from other scripts
     {
         Instance.resources = Instance.resources + amount;
-
         GameManager.PlanetList[planet_id].UiScript.PopChanges(amount);
-       
     }
+
     public static void SubstractResources(int amount) //called from other scripts
     {
         Instance.resources = Instance.resources - amount;
     }
-
-
-
 }

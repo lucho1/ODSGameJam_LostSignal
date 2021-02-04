@@ -6,8 +6,10 @@ using UnityEngine.UI;
 public class PlanetHUDScript : MonoBehaviour
 {
     [SerializeField]
-    private Text ColonizedPlanetsText;
+    private Text CurrentResources, ResourcesToPay;
 
+    [SerializeField]
+    private Text ColonizedPlanetsText;
 
     [SerializeField]
     private GameObject NextPlanetBtn, PrevPlanetBtn, HealthIndicator;
@@ -28,6 +30,11 @@ public class PlanetHUDScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // --- Current Resources & Debt Text ---
+        CurrentResources.text = GameManager.CurrentResources.ToString();
+        ResourcesToPay.text = GameManager.CurrentDebt.ToString();
+
+        // --- Next/Prev Buttons ---
         if (!NextPlanetBtn.activeInHierarchy && !PrevPlanetBtn.activeInHierarchy)
         {
             if (GameManager.PlanetList.Count > 1)
@@ -36,6 +43,8 @@ public class PlanetHUDScript : MonoBehaviour
                 PrevPlanetBtn.SetActive(true);
             }
         }
+
+        // --- Health Bar ---
         UpdateHealthIndicator();
     }
 
