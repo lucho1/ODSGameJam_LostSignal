@@ -24,3 +24,8 @@ MonoBehaviour:
   m_standardFactoryContamination: 1.2
   m_ecoFactoryContamination: 0.1
   m_planetRegeneration: 1
+  m_refreshRate: 0.5
+  m_resourceRefreshRate: 2
+  m_pollutionRefreshRate: 120
+  m_ecoFactoryProduction: 0
+  m_standardFactoryProduction: 0

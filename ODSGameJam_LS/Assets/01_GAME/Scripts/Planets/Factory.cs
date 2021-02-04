@@ -23,8 +23,8 @@ public class Factory : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Time.time >= m_nextContaminationTime) {
-            Debug.Log("Adding contamination");
+        if (Time.time >= m_nextContaminationTime)
+        {
             m_nextContaminationTime = Time.time + GameOptions.PollutionRefreshRate;
             if (EcoFactory)
                 m_nextContaminationTime = Time.time + GameOptions.EcoFactoryContamination;
@@ -33,8 +33,8 @@ public class Factory : MonoBehaviour
             myPlanet.currentHealth -= GameOptions.StandardFactoryContamination;
         }
 
-        if (Time.time >= m_nextResourceTime) {
-            Debug.Log("Adding score");
+        if (Time.time >= m_nextResourceTime)
+        {
             m_nextResourceTime = Time.time + GameOptions.ResourceRefreshRate;
             if (EcoFactory)
                 ResourcesManager.AddResources(GameOptions.EcoFactoryProduction, myPlanet.PlanetId);

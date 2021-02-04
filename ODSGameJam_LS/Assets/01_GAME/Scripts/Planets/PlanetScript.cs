@@ -37,20 +37,23 @@ public class PlanetScript : MonoBehaviour
     public int PlanetId;
 
     //UI
-    public GameObject healthIndicator;
-    private Image healthImage;
-    private Slider healthSlider;
-    private Text healthText;
+    //public GameObject healthIndicator;
+    //private Image healthImage;
+    //private Slider healthSlider;
+    //private Text healthText;
+
+    private void Awake()
+    {
+        PlanetId = GameManager.PlanetList.Count;
+        GameManager.PlanetList.Add(this);
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        PlanetId = GameManager.PlanetList.Count;
-        GameManager.PlanetList.Add(this);
-
-        healthImage = healthIndicator.GetComponentInChildren<Image>();
-        healthSlider = healthIndicator.GetComponent<Slider>();
-        healthText = healthIndicator.GetComponentInChildren<Text>();
+        //healthImage = healthIndicator.GetComponentInChildren<Image>();
+        //healthSlider = healthIndicator.GetComponent<Slider>();
+        //healthText = healthIndicator.GetComponentInChildren<Text>();
 
         camera = GameObject.Find("Main Camera").GetComponent<Camera>();
     }
@@ -58,7 +61,7 @@ public class PlanetScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        UpdateHealthIndicator();
+        //UpdateHealthIndicator();
 
         if (Time.time - lastResourceUpdateTime > resourceUpdatePeriod)
         {
@@ -69,9 +72,9 @@ public class PlanetScript : MonoBehaviour
         //update camera rotation if the planet is being looked at
         if (cameraAttached)
         {
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(1))
                 rotatingPlanet = true;
-            if (Input.GetMouseButtonUp(0))
+            if (Input.GetMouseButtonUp(1))
                 rotatingPlanet = false;
 
             if (rotatingPlanet)
@@ -135,22 +138,22 @@ public class PlanetScript : MonoBehaviour
     public void AttachCamera()
     {
         cameraAttached = true;
-        healthIndicator.SetActive(true);
+        //healthIndicator.SetActive(true);
     }
 
     public void DetachCamera()
     {
         cameraAttached = false;
-        healthIndicator.SetActive(false);
+        //healthIndicator.SetActive(false);
     }
 
-    public void UpdateHealthIndicator()
-    {
-        float h = currentHealth / 360;// h = 100 --> green ,  h =0 --> red
+    //public void UpdateHealthIndicator()
+    //{
+    //    float h = currentHealth / 360;// h = 100 --> green ,  h =0 --> red
       
-        healthImage.color = Color.HSVToRGB(h,1.0f,1.0f);
-        healthSlider.value = currentHealth / 100;
+    //    healthImage.color = Color.HSVToRGB(h,1.0f,1.0f);
+    //    healthSlider.value = currentHealth / 100;
 
-        healthText.text = "Health: " + currentHealth.ToString() + " %";
-    }
+    //    healthText.text = "Health: " + currentHealth.ToString() + " %";
+    //}
 }
