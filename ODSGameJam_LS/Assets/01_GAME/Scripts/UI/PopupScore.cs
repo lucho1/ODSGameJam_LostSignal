@@ -11,8 +11,6 @@ public class PopupScore : MonoBehaviour
     private TextMeshPro m_TextMeshPro;
     private Color m_Color;
 
-    public GameObject TextGO;
-
     void Awake()
     {
        

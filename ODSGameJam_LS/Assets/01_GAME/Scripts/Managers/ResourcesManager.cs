@@ -24,19 +24,9 @@ public class ResourcesManager : Singleton<ResourcesManager>
 
     void Start()
     {
-        InvokeRepeating("UpdateResources", 1.0f, refreshRate);
+        InvokeRepeating("UpdateResources", 1.0f, GameOptions.RefreshRate);
         resources = GameManager.CurrentResources;
    
-    }
-
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown("space"))
-        {
-            AddResources(110);
-        }
     }
 
     void UpdateResources() //called every x frames
@@ -47,15 +37,14 @@ public class ResourcesManager : Singleton<ResourcesManager>
 
     //USER FUNCTIONS
 
-    static void AddResources(int amount) //called from other scripts
+    public static void AddResources(int amount,int planet_id) //called from other scripts
     {
         Instance.resources = Instance.resources + amount;
 
-        Instance.PopUpScoreUIGameObject.DisplayNumber = amount;
-        Instance.PopUpScoreUIGameObject.changes = true;
-        
+        GameManager.PlanetList[planet_id].UiScript.PopChanges(amount);
+       
     }
-    static void SubstractResources(int amount) //called from other scripts
+    public static void SubstractResources(int amount) //called from other scripts
     {
         Instance.resources = Instance.resources - amount;
     }

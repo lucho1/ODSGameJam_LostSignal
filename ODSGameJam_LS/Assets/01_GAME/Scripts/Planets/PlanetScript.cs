@@ -5,11 +5,16 @@ using UnityEngine.UI;
 
 public class PlanetScript : MonoBehaviour
 {
+
+    public ResourcesUI UiScript;
+
     [Space(10)]
     [Header("Planet atributes")]
 
     public int planetHealthRecoveryRate = 5;    //Health recovered per second
     public float currentHealth = 100.0f;             //Planet's health from 0 to 100
+
+     
 
     //Timers
     public float resourceUpdatePeriod = 1.0f;   //Every x seconds the resources produced by this planet will be updated on the resource manager
@@ -28,6 +33,9 @@ public class PlanetScript : MonoBehaviour
     public GameObject CameraPosition;
     private bool cameraAttached = false;
 
+    [System.NonSerialized]
+    public int PlanetId;
+
     //UI
     public GameObject healthIndicator;
     private Image healthImage;
@@ -37,6 +45,9 @@ public class PlanetScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        PlanetId = GameManager.PlanetList.Count;
+        GameManager.PlanetList.Add(this);
+
         healthImage = healthIndicator.GetComponentInChildren<Image>();
         healthSlider = healthIndicator.GetComponent<Slider>();
         healthText = healthIndicator.GetComponentInChildren<Text>();
