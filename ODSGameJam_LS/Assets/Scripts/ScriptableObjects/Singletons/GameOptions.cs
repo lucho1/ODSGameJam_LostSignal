@@ -78,4 +78,48 @@ public class GameOptions : ScriptableObject
             Instance.m_payingAmount = value;
         }
     }
+
+    [SerializeField]
+    private int m_standardFactoryCost;
+    public static int StandardFactoryCost {
+        get {
+            return Instance.m_standardFactoryCost;
+        }
+        set {
+            Instance.m_standardFactoryCost = value;
+        }
+    }
+
+    [SerializeField]
+    private int m_ecoFactoryCost;
+    public static int EcoFactoryCost {
+        get {
+            return Instance.m_ecoFactoryCost;
+        }
+        set {
+            Instance.m_ecoFactoryCost = value;
+        }
+    }
+
+    [SerializeField]
+    private int m_destructionCost;
+    public static int DestructionCost {
+        get {
+            return Instance.m_destructionCost;
+        }
+        set {
+            Instance.m_destructionCost = value;
+        }
+    }
+
+    [SerializeField]
+    private float m_planetCostIncrease;
+    public static float PlanetCostIncrease {
+        get {
+            return Instance.m_planetCostIncrease;
+        }
+        set {
+            Instance.m_planetCostIncrease = value;
+        }
+    }
 }
