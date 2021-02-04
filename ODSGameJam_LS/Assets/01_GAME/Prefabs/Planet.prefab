@@ -1,5 +1,49 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6944940406499000552
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2571280467615776856}
+  - component: {fileID: 2431274188966341665}
+  m_Layer: 0
+  m_Name: PopUpScoreUI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2571280467615776856
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6944940406499000552}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 97.7404, y: 157.5, z: 43.438843}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7243839208420433198}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2431274188966341665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6944940406499000552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad9a06b17096c9e48b9ab236b53fabb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TMP: {fileID: 4091503619517025226, guid: 520bbf06e01c8254791d0e85c76ed35c, type: 3}
 --- !u!1 &7223015370203824838
 GameObject:
   m_ObjectHideFlags: 0
@@ -63,6 +107,7 @@ Transform:
   m_Children:
   - {fileID: 8863560868911287388}
   - {fileID: 1120725592292429587}
+  - {fileID: 2571280467615776856}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -138,6 +183,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8269adbbd49608e4eaed139f5201dfa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UiScript: {fileID: 2431274188966341665}
   planetHealthRecoveryRate: 5
   currentHealth: 100
   resourceUpdatePeriod: 1
