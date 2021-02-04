@@ -24,7 +24,7 @@ public class PlanetScript : MonoBehaviour
 
     [Space(10)]
     public Camera camera;
-
+    public GameObject CameraPosition;
     private bool cameraAttached = false;
 
     // Start is called before the first frame update
