@@ -42,6 +42,7 @@ public class PlanetSwitchCameraScript : MonoBehaviour
                 {
                     m_SwitchPlanet = false;
                     InterpolationFinished = true;
+                    GameManager.PlanetList[GameManager.CurrentPlanetIndex].AttachCamera();
                 }
             }
         }

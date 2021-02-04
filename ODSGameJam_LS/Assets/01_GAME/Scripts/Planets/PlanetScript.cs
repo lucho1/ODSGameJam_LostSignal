@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlanetScript : MonoBehaviour
 {
@@ -8,7 +9,7 @@ public class PlanetScript : MonoBehaviour
     [Header("Planet atributes")]
 
     public int planetHealthRecoveryRate = 5;    //Health recovered per second
-    public int currentHealth = 100;              //Planet's health from 0 to 100
+    public float currentHealth = 100.0f;             //Planet's health from 0 to 100
 
     //Timers
     public float resourceUpdatePeriod = 1.0f;   //Every x seconds the resources produced by this planet will be updated on the resource manager
@@ -27,15 +28,27 @@ public class PlanetScript : MonoBehaviour
     public GameObject CameraPosition;
     private bool cameraAttached = false;
 
+    //UI
+    public GameObject healthIndicator;
+    private Image healthImage;
+    private Slider healthSlider;
+    private Text healthText;
+
     // Start is called before the first frame update
     void Start()
     {
+        healthImage = healthIndicator.GetComponentInChildren<Image>();
+        healthSlider = healthIndicator.GetComponent<Slider>();
+        healthText = healthIndicator.GetComponentInChildren<Text>();
 
+        camera = GameObject.Find("Main Camera").GetComponent<Camera>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        UpdateHealthIndicator();
+
         if (Time.time - lastResourceUpdateTime > resourceUpdatePeriod)
         {
             lastResourceUpdateTime = Time.time;
@@ -111,10 +124,22 @@ public class PlanetScript : MonoBehaviour
     public void AttachCamera()
     {
         cameraAttached = true;
+        healthIndicator.SetActive(true);
     }
 
     public void DetachCamera()
     {
         cameraAttached = false;
+        healthIndicator.SetActive(false);
+    }
+
+    public void UpdateHealthIndicator()
+    {
+        float h = currentHealth / 360;// h = 100 --> green ,  h =0 --> red
+      
+        healthImage.color = Color.HSVToRGB(h,1.0f,1.0f);
+        healthSlider.value = currentHealth / 100;
+
+        healthText.text = "Health: " + currentHealth.ToString() + " %";
     }
 }

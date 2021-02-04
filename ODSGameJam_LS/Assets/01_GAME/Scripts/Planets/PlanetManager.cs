@@ -20,6 +20,7 @@ public class PlanetManager : MonoBehaviour
     void Start()
     {
         (GameManager.PlanetList).Add(InitialPlanet);
+        InitialPlanet.AttachCamera();
     }
 
     // Update is called once per frame
@@ -49,6 +50,8 @@ public class PlanetManager : MonoBehaviour
 
     void SwitchPlanet(bool forward = true)
     {
+        GameManager.PlanetList[GameManager.CurrentPlanetIndex].DetachCamera();
+
         GameObject next_planet;
         if (forward)
             next_planet = GameManager.NextPlanet().CameraPosition;
