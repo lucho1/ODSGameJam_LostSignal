@@ -5,6 +5,9 @@ using UnityEngine;
 public class PlanetManager : MonoBehaviour
 {
     [SerializeField]
+    int PosRange = 25;
+
+    [SerializeField]
     private PlanetScript InitialPlanet;
 
     [SerializeField]
@@ -25,7 +28,10 @@ public class PlanetManager : MonoBehaviour
         // --- Planet Creation ---
         if (Input.GetKeyDown(KeyCode.B))
         {
-            (GameManager.PlanetList).Add(Instantiate(PlanetPrefab).GetComponent<PlanetScript>());
+            Vector3 planet_pos = new Vector3(Random.Range(-PosRange, PosRange), Random.Range(-PosRange, PosRange), Random.Range(-PosRange, PosRange));
+            Vector3 planet_rot = new Vector3(Random.Range(0, 360), Random.Range(0, 360), Random.Range(0, 360));
+
+            (GameManager.PlanetList).Add(Instantiate(PlanetPrefab, planet_pos, Quaternion.Euler(planet_rot)).GetComponent<PlanetScript>());
             SwitchPlanet();
         }
 
