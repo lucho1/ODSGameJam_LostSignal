@@ -50,6 +50,8 @@ public class PopupScore : MonoBehaviour
         transform.LookAt(Camera.main.transform);
 
         origRot.y = transform.eulerAngles.y;
+        origRot.y += 180;
+
         transform.eulerAngles = origRot;
         LookAtCamera = true;
     }  

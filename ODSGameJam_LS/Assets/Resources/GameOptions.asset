@@ -28,4 +28,4 @@ MonoBehaviour:
   m_resourceRefreshRate: 2
   m_pollutionRefreshRate: 120
   m_ecoFactoryProduction: 0
-  m_standardFactoryProduction: 0
+  m_standardFactoryProduction: 1000
