@@ -122,11 +122,13 @@ public class PlanetScript : MonoBehaviour
     public void AttachCamera()
     {
         cameraAttached = true;
+        healthIndicator.SetActive(true);
     }
 
     public void DetachCamera()
     {
         cameraAttached = false;
+        healthIndicator.SetActive(false);
     }
 
     public void UpdateHealthIndicator()
