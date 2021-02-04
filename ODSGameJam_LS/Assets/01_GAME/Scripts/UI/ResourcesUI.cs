@@ -25,7 +25,9 @@ public class ResourcesUI: MonoBehaviour
 
     public void PopChanges(int DisplayNumber)
     {
-        PopupScore.CreatePopup(TMP, transform.localPosition, DisplayNumber);
+        Vector3 pos = transform.position;
+        pos.y = transform.localPosition.y;
+        PopupScore.CreatePopup(TMP, pos, DisplayNumber);
     }
 
 }
