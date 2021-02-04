@@ -40,7 +40,7 @@ public class GameManager : Singleton<GameManager>
         }
     }
 
-    private int m_currentPlanetIndex;
+    private int m_currentPlanetIndex = 0;
     public static int CurrentPlanetIndex {
         get {
             return Instance.m_currentPlanetIndex;

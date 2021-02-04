@@ -5,7 +5,10 @@ using UnityEngine;
 public class PlanetsSwitchScript : MonoBehaviour
 {
     [SerializeField]
-    private PlanetScript PlanetPrefab;
+    private List<PlanetScript> PlanetList = new List<PlanetScript>();
+
+    [SerializeField]
+    private List<GameObject> PlanetListCameras = new List<GameObject>();
 
     [SerializeField]
     private GameObject CurrentCamera;
@@ -13,16 +16,24 @@ public class PlanetsSwitchScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        GameManager.PlanetList = PlanetList;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            Transform camPos = PlanetPrefab.CameraPosition.transform;
-            CurrentCamera.GetComponent<PlanetSwitchCameraScript>().SwitchPlanet(camPos);
+            GameManager.NextPlanet();
+            Transform newPos = PlanetListCameras[GameManager.CurrentPlanetIndex].transform;
+            CurrentCamera.GetComponent<PlanetSwitchCameraScript>().SwitchPlanet(newPos);
+        }
+
+        if (Input.GetKeyDown(KeyCode.LeftControl))
+        {
+            GameManager.PreviousPlanet();
+            Transform newPos = PlanetListCameras[GameManager.CurrentPlanetIndex].transform;
+            CurrentCamera.GetComponent<PlanetSwitchCameraScript>().SwitchPlanet(newPos);
         }
     }
 }
