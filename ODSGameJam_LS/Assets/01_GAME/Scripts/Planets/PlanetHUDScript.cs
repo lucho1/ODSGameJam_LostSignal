@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class PlanetHUDScript : MonoBehaviour
 {
-    private BackTimer m_PayTime;
     [SerializeField]
     private Button PayButtonBtn;
 
@@ -34,10 +33,6 @@ public class PlanetHUDScript : MonoBehaviour
     {
         ColonizedPlanetsText.text = "Colonized Planets: " + GameManager.PlanetList.Count.ToString();
 
-        m_PayTime = GetComponent<BackTimer>();
-        m_PayTime.StartTime = GameOptions.TimerDuration;
-        m_PayTime.Begin();
-
         healthImage =   HealthIndicator.GetComponentInChildren<Image>();
         healthSlider =  HealthIndicator.GetComponent<Slider>();
         healthText =    HealthIndicator.GetComponentInChildren<Text>();
@@ -62,10 +57,7 @@ public class PlanetHUDScript : MonoBehaviour
         // --- Current Resources & Debt Text + Timer ---
         CurrentResources.text = GameManager.CurrentResources.ToString();
         ResourcesToPay.text = GameManager.CurrentDebt.ToString();
-        PayTimerText.text = m_PayTime.GetTimeString();
-
-        if (m_PayTime.Finished)
-            m_PayTime.Begin();
+        PayTimerText.text = ResourcesManager.DebtTimer.GetTimeString();
 
         // --- Next/Prev Buttons ---
         if (!NextPlanetBtn.activeInHierarchy && !PrevPlanetBtn.activeInHierarchy)

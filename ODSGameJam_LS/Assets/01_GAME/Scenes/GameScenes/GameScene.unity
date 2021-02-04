@@ -506,7 +506,8 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5336623146053998284, guid: a806ac61320331a4a99e8cf186050dda, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a806ac61320331a4a99e8cf186050dda, type: 3}
 --- !u!1 &1242660568
 GameObject:
