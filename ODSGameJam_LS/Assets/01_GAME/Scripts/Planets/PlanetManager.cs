@@ -29,11 +29,7 @@ public class PlanetManager : Singleton<PlanetManager>
         // --- Planet Creation ---
         if (Input.GetKeyDown(KeyCode.B))
         {
-            Vector3 planet_pos = new Vector3(Random.Range(-PosRange, PosRange), Random.Range(-PosRange, PosRange), Random.Range(-PosRange, PosRange));
-            Vector3 planet_rot = new Vector3(Random.Range(0, 360), Random.Range(0, 360), Random.Range(0, 360));
-
-            Instantiate(PlanetPrefab, planet_pos, Quaternion.Euler(planet_rot)).GetComponent<PlanetScript>();
-            SwitchPlanet();
+            CreatePlanet();
         }
 
 
@@ -48,16 +44,29 @@ public class PlanetManager : Singleton<PlanetManager>
         }
     }
 
-    void SwitchPlanet(bool forward = true)
+    public static void CreatePlanet()
     {
-        GameManager.PlanetList[GameManager.CurrentPlanetIndex].DetachCamera();
+        float pos_range = Instance.PosRange;
+        Vector3 planet_pos = new Vector3(Random.Range(-pos_range, pos_range), Random.Range(-pos_range, pos_range), Random.Range(-pos_range, pos_range));
+        Vector3 planet_rot = new Vector3(Random.Range(0, 360), Random.Range(0, 360), Random.Range(0, 360));
 
+        Instantiate(Instance.PlanetPrefab, planet_pos, Quaternion.Euler(planet_rot)).GetComponent<PlanetScript>();
+        SwitchPlanet();
+    }
+
+    public static void SwitchPlanet(bool forward = true)
+    {
+        if (GameManager.PlanetList.Count <= 1)
+            return;
+
+        GameManager.PlanetList[GameManager.CurrentPlanetIndex].DetachCamera();
         GameObject next_planet;
+
         if (forward)
             next_planet = GameManager.NextPlanet().CameraPosition;
         else
             next_planet = GameManager.PreviousPlanet().CameraPosition;
 
-        CurrentCamera.GetComponent<PlanetSwitchCameraScript>().SwitchPlanet(next_planet.transform);
+        Instance.CurrentCamera.GetComponent<PlanetSwitchCameraScript>().SwitchPlanet(next_planet.transform);
     }
 }

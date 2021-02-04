@@ -42,12 +42,15 @@ public class PlanetScript : MonoBehaviour
     private Slider healthSlider;
     private Text healthText;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         PlanetId = GameManager.PlanetList.Count;
         GameManager.PlanetList.Add(this);
+    }
 
+    // Start is called before the first frame update
+    void Start()
+    {
         healthImage = healthIndicator.GetComponentInChildren<Image>();
         healthSlider = healthIndicator.GetComponent<Slider>();
         healthText = healthIndicator.GetComponentInChildren<Text>();

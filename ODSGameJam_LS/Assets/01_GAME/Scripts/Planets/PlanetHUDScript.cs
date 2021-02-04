@@ -5,43 +5,43 @@ using UnityEngine.UI;
 
 public class PlanetHUDScript : MonoBehaviour
 {
-    private PlanetManager m_PlanetManager;
-
     [SerializeField]
     private Text ColonizedPlanetsText;
 
     [SerializeField]
     private GameObject NextPlanetBtn, PrevPlanetBtn;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        m_PlanetManager = GetComponentInParent<PlanetManager>();
+        ColonizedPlanetsText.text = "Colonized Planets: " + GameManager.PlanetList.Count.ToString();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (GameManager.PlanetList.Count > 1)
+        if (!NextPlanetBtn.activeInHierarchy && !PrevPlanetBtn.activeInHierarchy)
         {
-            NextPlanetBtn.SetActive(true);
-            PrevPlanetBtn.SetActive(true);
+            if (GameManager.PlanetList.Count > 1)
+            {
+                NextPlanetBtn.SetActive(true);
+                PrevPlanetBtn.SetActive(true);
+            }
         }
     }
 
     public void NextPlanetButton()
     {
-        //m_PlanetManager.SwitchPlanet();
+        PlanetManager.SwitchPlanet();
     }
 
     public void PrevPlanetButton()
     {
-        //m_PlanetManager.SwitchPlanet(false);
+        PlanetManager.SwitchPlanet(false);
     }
 
     public void ColonizePlanetButton()
     {
+        PlanetManager.CreatePlanet();
         ColonizedPlanetsText.text = "Colonized Planets: " + GameManager.PlanetList.Count.ToString();
-
     }
 }
