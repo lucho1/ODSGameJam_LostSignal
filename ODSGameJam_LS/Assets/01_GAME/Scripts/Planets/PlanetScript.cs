@@ -40,6 +40,8 @@ public class PlanetScript : MonoBehaviour
         healthImage = healthIndicator.GetComponentInChildren<Image>();
         healthSlider = healthIndicator.GetComponent<Slider>();
         healthText = healthIndicator.GetComponentInChildren<Text>();
+
+        camera = GameObject.Find("Main Camera").GetComponent<Camera>();
     }
 
     // Update is called once per frame
