@@ -26,11 +26,14 @@ public class MenusScript : MonoBehaviour
     public void PlayHoverSound()
     {
         //m_AudioSource.Stop();
-        m_AudioSource.clip = HoverSound;
-        m_AudioSource.Play();
+        if (!m_AudioSource.isPlaying)
+        {
+            m_AudioSource.clip = HoverSound;
+            m_AudioSource.Play();
+        }
     }
 
-    private void PlayClickSound()
+    public void PlayClickSound()
     {
         m_AudioSource.Stop();
         m_AudioSource.clip = ClickSound;
