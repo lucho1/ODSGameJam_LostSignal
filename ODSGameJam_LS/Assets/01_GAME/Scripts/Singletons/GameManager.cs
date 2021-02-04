@@ -57,6 +57,17 @@ public class GameManager : Singleton<GameManager>
     }
 
     [SerializeField]
+    private int m_currentDebt = GameOptions.OwedResources;
+    public static int CurrentDebt {
+        get {
+            return Instance.m_currentDebt;
+        }
+        set {
+            Instance.m_currentDebt = value;
+        }
+    }
+
+    [SerializeField]
     private GameObject m_CurrentSelectedCell = null;
     public static GameObject CurrentSelectedCell {
         get {
