@@ -6,15 +6,13 @@ public class ResourcesUI: MonoBehaviour
 
     private int resources;
 
-    public int DisplayNumber;
-
     public GameObject TMP;
-    public bool changes = false;
+   
 
     void Start()
     {
         resources = GameManager.CurrentResources;
-        DisplayNumber = 0;
+        
     }
 
     
@@ -22,12 +20,12 @@ public class ResourcesUI: MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (changes)
-        {
-            PopupScore.CreatePopup(TMP, this.transform.position, DisplayNumber);
-            
-            changes = false;
-        }
+     
+    }
+
+    public void PopChanges(int DisplayNumber)
+    {
+        PopupScore.CreatePopup(TMP, this.transform.position, DisplayNumber);
     }
 
 }
