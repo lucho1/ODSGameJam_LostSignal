@@ -50,7 +50,7 @@ public class GameManager : Singleton<GameManager>
         }
     }
 
-    static PlanetScript NextPlanet() {
+    public static PlanetScript NextPlanet() {
         if (CurrentPlanetIndex == PlanetList.Count - 1)
             CurrentPlanetIndex = 0;
         else
@@ -59,7 +59,7 @@ public class GameManager : Singleton<GameManager>
         return PlanetList[CurrentPlanetIndex];
     }
 
-    static PlanetScript PreviousPlanet() {
+    public static PlanetScript PreviousPlanet() {
         if (CurrentPlanetIndex == 0)
             CurrentPlanetIndex = PlanetList.Count - 1;
         else
