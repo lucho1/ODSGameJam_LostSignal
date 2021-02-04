@@ -3,7 +3,7 @@
 public class SimpleTimer
 {
 
-    public float StartTime = 10.0f;
+    public float Duration = 10.0f;
     public float StopTime = 0.0f;
     float m_FinishTime = 0.0f;
     public bool Running = false;
@@ -11,12 +11,23 @@ public class SimpleTimer
 
     public void Begin()
     {
-        m_FinishTime = Time.time + StartTime;
+        m_FinishTime = Time.time + Duration;
+        Running = true;
     }
     public void Stop()
     {
+        if (!Running)
+            return;
         Running = false;
         StopTime = Time.time;
+    }
+
+    public void Resume() 
+    {
+        if (Running)
+            return;
+        m_FinishTime = Time.time + (m_FinishTime - StopTime);
+        Running = true;
     }
 
     public int GetMinutes()
