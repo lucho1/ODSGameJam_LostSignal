@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6df0e144bc6b8c48acca5da8b52f555, type: 3}
   m_Name: GameOptions
   m_EditorClassIdentifier: 
-  m_startingFunds: 50
+  m_startingFunds: 200
   m_owedResources: 20000
   m_timerDuration: 120
   m_increasedDebt: 500
@@ -28,4 +28,4 @@ MonoBehaviour:
   m_resourceRefreshRate: 2
   m_pollutionRefreshRate: 120
   m_ecoFactoryProduction: 0
-  m_standardFactoryProduction: 0
+  m_standardFactoryProduction: 1000

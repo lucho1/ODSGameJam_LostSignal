@@ -113,6 +113,17 @@ public class GameOptions : ScriptableObject
     }
 
     [SerializeField]
+    private int m_planetCost;
+    public static int PlanetCost {
+        get {
+            return Instance.m_planetCost;
+        }
+        set {
+            Instance.m_planetCost = value;
+        }
+    }
+
+    [SerializeField]
     private float m_planetCostIncrease;
     public static float PlanetCostIncrease {
         get {

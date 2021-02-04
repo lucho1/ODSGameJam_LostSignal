@@ -6,8 +6,13 @@ using UnityEngine.UI;
 public class PlanetHUDScript : MonoBehaviour
 {
     [SerializeField]
-    private Text ColonizedPlanetsText;
+    private Button PayButtonBtn;
 
+    [SerializeField]
+    private Text PayTimerText, CurrentResources, ResourcesToPay;
+
+    [SerializeField]
+    private Text ColonizedPlanetsText;
 
     [SerializeField]
     private GameObject NextPlanetBtn, PrevPlanetBtn, HealthIndicator;
@@ -15,6 +20,7 @@ public class PlanetHUDScript : MonoBehaviour
     private Image healthImage;
     private Slider healthSlider;
     private Text healthText;
+
 
     private void Start()
     {
@@ -28,6 +34,18 @@ public class PlanetHUDScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // --- Pay Button ---
+        if (GameManager.CurrentResources >= GameOptions.PayingAmount)
+            PayButtonBtn.interactable = true;
+        else
+            PayButtonBtn.interactable = false;
+
+        // --- Current Resources & Debt Text + Timer ---
+        CurrentResources.text = GameManager.CurrentResources.ToString();
+        ResourcesToPay.text = GameManager.CurrentDebt.ToString();
+        PayTimerText.text = ResourcesManager.DebtTimer.GetTimeString();
+
+        // --- Next/Prev Buttons ---
         if (!NextPlanetBtn.activeInHierarchy && !PrevPlanetBtn.activeInHierarchy)
         {
             if (GameManager.PlanetList.Count > 1)
@@ -36,7 +54,18 @@ public class PlanetHUDScript : MonoBehaviour
                 PrevPlanetBtn.SetActive(true);
             }
         }
+
+        // --- Health Bar ---
         UpdateHealthIndicator();
+    }
+
+    public void PayButton()
+    {
+        if (GameManager.CurrentResources >= GameOptions.PayingAmount)
+        {
+            ResourcesManager.SubstractDebt(GameOptions.PayingAmount);
+            ResourcesManager.SubstractResources(GameOptions.PayingAmount);
+        }
     }
 
     public void NextPlanetButton()
