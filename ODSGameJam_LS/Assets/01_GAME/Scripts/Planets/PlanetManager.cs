@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlanetManager : MonoBehaviour
+public class PlanetManager : Singleton<PlanetManager>
 {
     [SerializeField]
     int PosRange = 25;
