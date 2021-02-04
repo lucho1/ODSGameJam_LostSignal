@@ -12,6 +12,7 @@ public class GameManager : Singleton<GameManager>
 
     protected GameManager() {}
     
+    [SerializeField]
     private List<PlanetScript> m_planetList;
     public static List<PlanetScript> PlanetList {
         get {
@@ -22,6 +23,7 @@ public class GameManager : Singleton<GameManager>
         }
     }
 
+    [SerializeField]
     private int m_currentResources;
     public static int CurrentResources {
         get {
@@ -43,6 +45,7 @@ public class GameManager : Singleton<GameManager>
         }
     }
 
+    [SerializeField]
     private int m_currentPlanetIndex = 0;
     public static int CurrentPlanetIndex {
         get {
@@ -52,7 +55,7 @@ public class GameManager : Singleton<GameManager>
             Instance.m_currentPlanetIndex = value;
         }
     }
-
+    
     public static PlanetScript NextPlanet() {
         if (CurrentPlanetIndex == PlanetList.Count - 1)
             CurrentPlanetIndex = 0;
