@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MainMenuScript : MonoBehaviour
+public class MenusScript : MonoBehaviour
 {
     [SerializeField]
     private GameObject MenuObject;
@@ -12,7 +12,26 @@ public class MainMenuScript : MonoBehaviour
     [SerializeField]
     private GameObject InstructionsObject;
 
+    // --- Generic ---
+    public void CreditsButton()
+    {
+        MenuObject.SetActive(false);
+        CreditsObject.SetActive(true);
+    }
 
+    public void CreditsReturnButton()
+    {
+        CreditsObject.SetActive(false);
+        MenuObject.SetActive(true);
+    }
+
+    // --- Game Over Screen ---
+    public void MainMenuButton()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    // --- Main Menu Screen ---
     public void PlayButton()
     {
         MenuObject.SetActive(false);
@@ -28,18 +47,6 @@ public class MainMenuScript : MonoBehaviour
     public void InstructionsPlayButton()
     {
         SceneManager.LoadScene("GameScene");
-    }
-
-    public void CreditsButton()
-    {
-        MenuObject.SetActive(false);
-        CreditsObject.SetActive(true);
-    }
-
-    public void CreditsReturnButton()
-    {
-        CreditsObject.SetActive(false);
-        MenuObject.SetActive(true);
     }
 
     public void QuitButton()
