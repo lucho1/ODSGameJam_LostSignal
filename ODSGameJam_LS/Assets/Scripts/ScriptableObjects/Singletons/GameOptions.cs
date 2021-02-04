@@ -122,4 +122,37 @@ public class GameOptions : ScriptableObject
             Instance.m_planetCostIncrease = value;
         }
     }
+
+    [SerializeField]
+    private float m_standardFactoryContamination;
+    public static float StandardFactoryContamination {
+        get {
+            return Instance.m_standardFactoryContamination;
+        }
+        set {
+            Instance.m_standardFactoryContamination = value;
+        }
+    }
+
+    [SerializeField]
+    private float m_ecoFactoryContamination;
+    public static float EcoFactoryContamination {
+        get {
+            return Instance.m_ecoFactoryContamination;
+        }
+        set {
+            Instance.m_ecoFactoryContamination = value;
+        }
+    }
+
+    [SerializeField]
+    private float m_planetRegeneration;
+    public static float PlanetRegeneration {
+        get {
+            return Instance.m_planetRegeneration;
+        }
+        set {
+            Instance.m_planetRegeneration = value;
+        }
+    }
 }
