@@ -17,6 +17,11 @@ public class ResourcesManager : Singleton<ResourcesManager>
 
     // Start is called before the first frame update
     private int resources;
+    public static int Resources {
+        get {
+            return Instance.resources;
+        }
+    }
     
 
     public ResourcesUI PopUpScoreUIGameObject;
