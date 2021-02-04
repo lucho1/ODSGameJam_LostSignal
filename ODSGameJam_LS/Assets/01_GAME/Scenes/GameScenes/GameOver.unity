@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -320,7 +320,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: GAME NAME
+  m_Text: Project Rebirth
 --- !u!222 &452585525
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1817,8 +1817,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 120.7}
-  m_SizeDelta: {x: 316.414, y: 30}
+  m_AnchoredPosition: {x: 0, y: 115.15}
+  m_SizeDelta: {x: 316.414, y: 51.909294}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1781668800
 MonoBehaviour:
@@ -1852,7 +1852,11 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Resources Management game made for ODS CITM Game Jam 2021
+  m_Text: 'Resources Management game in which to get to a balance between production
+    and polution
+
+
+    Made for ODS CITM Game Jam 2021 by:'
 --- !u!222 &1781668801
 CanvasRenderer:
   m_ObjectHideFlags: 0
