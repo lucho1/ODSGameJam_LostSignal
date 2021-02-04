@@ -23,6 +23,12 @@ public class Factory : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!myPlanet || myPlanet.currentHealth == 0) {
+            this.enabled = false;
+            return;
+        }
+
+
         if (Time.time >= m_nextContaminationTime)
         {
             m_nextContaminationTime = Time.time + GameOptions.PollutionRefreshRate;
@@ -33,13 +39,15 @@ public class Factory : MonoBehaviour
             myPlanet.currentHealth -= GameOptions.StandardFactoryContamination;
         }
 
+        float efficiency = myPlanet.currentHealth / 100.0f;
+
         if (Time.time >= m_nextResourceTime)
         {
             m_nextResourceTime = Time.time + GameOptions.ResourceRefreshRate;
             if (EcoFactory)
-                ResourcesManager.AddResources(GameOptions.EcoFactoryProduction, myPlanet.PlanetId);
+                ResourcesManager.AddResources(Mathf.RoundToInt(GameOptions.EcoFactoryProduction * efficiency), myPlanet.PlanetId);
             else
-                ResourcesManager.AddResources(GameOptions.StandardFactoryProduction, myPlanet.PlanetId);
+                ResourcesManager.AddResources(Mathf.RoundToInt(GameOptions.StandardFactoryProduction * efficiency), myPlanet.PlanetId);
         }
     }
 }
