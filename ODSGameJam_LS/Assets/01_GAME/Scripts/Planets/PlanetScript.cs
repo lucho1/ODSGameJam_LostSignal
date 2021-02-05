@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
 
 public class PlanetScript : MonoBehaviour
@@ -16,8 +14,10 @@ public class PlanetScript : MonoBehaviour
     public float currentPolution = 0.0f;
     public bool planetAlive = true;
 
+
     //Events
     public UnityEvent planetDeath;
+    public UnityEvent planetContaminationChanged;
 
     //Timers
     private SimpleTimer healthRegenTimer;
@@ -42,7 +42,10 @@ public class PlanetScript : MonoBehaviour
     public Camera camera;
     public GameObject CameraPosition;
     private bool cameraAttached = false;
+    public ParticleSystem m_ContaminationFog;
 
+    [System.NonSerialized]
+    public int FactoriesSpawned = 0;
     [System.NonSerialized]
     public int PlanetId;
     [System.NonSerialized]
@@ -106,6 +109,8 @@ public class PlanetScript : MonoBehaviour
                 currentHealth += GameOptions.PlanetRegeneration;
                 if (currentHealth > 100)
                     currentHealth = 100;
+
+                planetContaminationChanged.Invoke();
             }
         }
         if (currentHealth <= 0) {
@@ -211,5 +216,24 @@ public class PlanetScript : MonoBehaviour
             if (zoomNormVelocity > 0)
                 zoomNormVelocity = 0.0f;
         }
+    }
+
+    public void AddFactory() {
+        ++FactoriesSpawned;
+        float Alpha = (FactoriesSpawned / 12.0f);
+        var main = m_ContaminationFog.main;
+        Color myColor = main.startColor.color;
+        myColor.a = Alpha;
+        main.startColor = myColor;
+    }
+
+    public void RemoveFactory() {
+        --FactoriesSpawned;
+        
+        float Alpha = FactoriesSpawned == 0 ? 0 : (FactoriesSpawned / 12.0f);
+        var main = m_ContaminationFog.main;
+        Color myColor = main.startColor.color;
+        myColor.a = Alpha;
+        main.startColor = myColor;
     }
 }

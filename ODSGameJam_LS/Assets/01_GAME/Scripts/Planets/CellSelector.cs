@@ -22,6 +22,8 @@ public class CellSelector : MonoBehaviour
     public string FactoryTag;
     [TagSelector]
     public string EcoTag;
+    [TagSelector]
+    public string GroundTag;
 
     TypeOfCell type;
     bool isWater;
@@ -33,6 +35,7 @@ public class CellSelector : MonoBehaviour
     GameObject m_treesObject;
     GameObject m_factoryObject;
     GameObject m_ecoObject;
+    GameObject m_groundObject;
 
     GameManager.TypeOfConstruction Construction = GameManager.TypeOfConstruction.None;
 
@@ -40,6 +43,7 @@ public class CellSelector : MonoBehaviour
     void Start() {
         m_Planet = GetComponentInParent<PlanetScript>();
         m_Planet.planetDeath.AddListener(OnPlanetDeath);
+        m_Planet.planetContaminationChanged.AddListener(OnContaminationChanged);
 
         type = (TypeOfCell)Random.Range(0,4);
 
@@ -93,12 +97,14 @@ public class CellSelector : MonoBehaviour
     void OnMouseDown() {
         if (!isAlive) {
             SoundsManager.PlaySound(SoundsManager.FailedConstructionSound);
+            m_islandAnimation.Play();
             return;
         }
 
         switch (GameManager.SelectedConstruction) {
             default:
                 SoundsManager.PlaySound(SoundsManager.FailedConstructionSound);
+                m_islandAnimation.Play();
                 break;
             case GameManager.TypeOfConstruction.Destroy:
                 DestroyBuiltFactory();
@@ -126,6 +132,8 @@ public class CellSelector : MonoBehaviour
                 m_factoryObject = c.gameObject;
             else if (c.CompareTag(EcoTag))
                 m_ecoObject = c.gameObject;
+            else if (c.CompareTag(GroundTag))
+                m_groundObject = c.gameObject;
         }
 
         if (m_factoryObject)
@@ -144,10 +152,14 @@ public class CellSelector : MonoBehaviour
     void DestroyBuiltFactory() {
         if (Construction == GameManager.TypeOfConstruction.None) {
             SoundsManager.PlaySound(SoundsManager.FailedConstructionSound);
+            m_islandAnimation.Play();
             return;
         }
-        if (GameManager.CurrentResources < GameOptions.DestructionCost) {
+
+        int totalCost = Mathf.RoundToInt(GameOptions.DestructionCost * (1 + (GameOptions.FactoryCostIncrease * m_Planet.PlanetId)));
+        if (GameManager.CurrentResources < totalCost) {
             SoundsManager.PlaySound(SoundsManager.FailedConstructionSound);
+            m_islandAnimation.Play();
             return;
         }
 
@@ -171,10 +183,14 @@ public class CellSelector : MonoBehaviour
     void BuildFactory() {
         if (Construction == GameManager.TypeOfConstruction.Factory) {
             SoundsManager.PlaySound(SoundsManager.FailedConstructionSound);
+            m_islandAnimation.Play();
             return;
         }
-        if (GameManager.CurrentResources < GameOptions.StandardFactoryCost) {
+
+        int totalCost = Mathf.RoundToInt(GameOptions.StandardFactoryCost * (1 + (GameOptions.FactoryCostIncrease * m_Planet.PlanetId)));
+        if (GameManager.CurrentResources < totalCost) {
             SoundsManager.PlaySound(SoundsManager.FailedConstructionSound);
+            m_islandAnimation.Play();
             return;
         }
 
@@ -192,10 +208,14 @@ public class CellSelector : MonoBehaviour
     void BuildEcoFactory() {
         if (Construction == GameManager.TypeOfConstruction.EcoFactory) {
             SoundsManager.PlaySound(SoundsManager.FailedConstructionSound);
+            m_islandAnimation.Play();
             return;
         }
-        if (GameManager.CurrentResources < GameOptions.EcoFactoryCost) {
+
+        int totalCost = Mathf.RoundToInt(GameOptions.EcoFactoryCost * (1 + (GameOptions.FactoryCostIncrease * m_Planet.PlanetId)));
+        if (GameManager.CurrentResources < totalCost) {
             SoundsManager.PlaySound(SoundsManager.FailedConstructionSound);
+            m_islandAnimation.Play();
             return;
         }
 
@@ -212,6 +232,14 @@ public class CellSelector : MonoBehaviour
 
     void OnPlanetDeath() {
         isAlive = false;
+        m_treesObject.SetActive(false);
         //mTODO Sergi: Maybe disable smoke effects
+    }
+
+    void OnContaminationChanged() {
+        float myContamination = m_Planet.currentHealth == 0 ? 1 : 1 - (m_Planet.currentHealth/100);
+        Material m_material = m_groundObject.GetComponent<Renderer>().material;
+        if (m_material)
+            m_material.SetFloat("_Contamination", myContamination);
     }
 }

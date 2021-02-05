@@ -15,7 +15,7 @@ public class PopupScore : MonoBehaviour
     void Awake()
     {       
         m_TextMeshPro = gameObject.GetComponent<TextMeshPro>();
-        FaceTextMeshToCamera();
+        //FaceTextMeshToCamera();
     }
 
     void Setup(int scoreAmount) 
@@ -38,8 +38,8 @@ public class PopupScore : MonoBehaviour
             Destroy(this.gameObject);
         }
 
-        if (LookAtCamera)
-            FaceTextMeshToCamera();
+        //if (LookAtCamera)
+        //    FaceTextMeshToCamera();
 
         //here add popup
     }
@@ -58,7 +58,10 @@ public class PopupScore : MonoBehaviour
 
     public static PopupScore CreatePopup(GameObject textPrefab, Vector3 position, int scoreAmount)
     {
-        GameObject newInstance = Instantiate(textPrefab, position, Quaternion.identity);
+        Vector3 spawnPos = position;
+        //spawnPos.y = 50.0f * Camera.main.transform.up.y;
+        GameObject newInstance = Instantiate(textPrefab, spawnPos, Quaternion.identity);
+        newInstance.transform.LookAt(Camera.main.transform);
 
         if (newInstance == null)
             return null;
