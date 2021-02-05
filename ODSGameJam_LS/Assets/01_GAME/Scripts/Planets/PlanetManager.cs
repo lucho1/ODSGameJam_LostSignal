@@ -1,6 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlanetManager : Singleton<PlanetManager>
 {
@@ -16,11 +15,15 @@ public class PlanetManager : Singleton<PlanetManager>
     [SerializeField]
     private GameObject CurrentCamera;
 
+    private int DeadPlanets = 0;
+
     // Start is called before the first frame update
     void Start()
     {
         //(GameManager.PlanetList).Add(InitialPlanet); //Sergi: Now done in Start of PlanetScript
         InitialPlanet.AttachCamera();
+        InitialPlanet.GetComponent<PlanetScript>().planetDeath.AddListener(Instance.OnPlanetDeath);
+
     }
 
     // Update is called once per frame
@@ -49,7 +52,8 @@ public class PlanetManager : Singleton<PlanetManager>
                 planet_pos = new Vector3(Random.Range(-pos_range, pos_range), Random.Range(-pos_range, pos_range), Random.Range(-pos_range, pos_range));
         }
 
-        Instantiate(Instance.PlanetPrefab, planet_pos, Quaternion.Euler(planet_rot)).GetComponent<PlanetScript>();
+        PlanetScript newPlanet = Instantiate(Instance.PlanetPrefab, planet_pos, Quaternion.Euler(planet_rot)).GetComponent<PlanetScript>();
+        newPlanet.planetDeath.AddListener(Instance.OnPlanetDeath);
         SwitchPlanet();
     }
 
@@ -68,5 +72,14 @@ public class PlanetManager : Singleton<PlanetManager>
             next_planet = GameManager.PreviousPlanet().CameraPosition;
 
         Instance.CurrentCamera.GetComponent<PlanetSwitchCameraScript>().SwitchPlanet(next_planet.transform);
+    }
+
+    public void OnPlanetDeath() {
+        ++Instance.DeadPlanets;
+
+        if (Instance.DeadPlanets == GameManager.PlanetList.Count) {
+            //myTODO Lucho: Play lose sound here
+            SceneManager.LoadScene("GameOver");
+        }
     }
 }

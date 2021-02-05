@@ -99,6 +99,8 @@ public class PlanetScript : MonoBehaviour
     private void UpdateHealth() 
     {
         if (currentHealth > 0) {
+            currentHealth -= currentPolution;
+            currentPolution = 0;
             if (healthRegenTimer.Finished()) {
                 healthRegenTimer.Begin();
                 currentHealth += GameOptions.PlanetRegeneration;
@@ -106,7 +108,7 @@ public class PlanetScript : MonoBehaviour
                     currentHealth = 100;
             }
         }
-        else {
+        if (currentHealth <= 0) {
             currentHealth = 0;
             planetAlive = false;
             planetDeath.Invoke();
