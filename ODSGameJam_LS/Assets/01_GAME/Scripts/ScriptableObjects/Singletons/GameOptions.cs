@@ -58,8 +58,8 @@ public class GameOptions : ScriptableObject
     }
 
     [SerializeField]
-    private int m_increasedDebt;
-    public static int IncreasedDebt {
+    private float m_increasedDebt;
+    public static float IncreasedDebt {
         get {
             return Instance.m_increasedDebt;
         }
