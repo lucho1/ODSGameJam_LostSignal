@@ -10588,7 +10588,7 @@ MonoBehaviour:
       m_Calls: []
   resourceUpdatePeriod: 1
   rotationSpeed: 5
-  deaceleration: 0.4
+  deaceleration: 5
   wasdVelocity: 0.4
   zoomVelocity: 50
   zoomDeaceleration: 2.8
