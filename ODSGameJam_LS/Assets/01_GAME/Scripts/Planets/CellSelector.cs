@@ -28,6 +28,7 @@ public class CellSelector : MonoBehaviour
     PlanetScript m_Planet;
 
     GameObject m_islandObject;
+    Animation m_islandAnimation;
     GameObject m_treesObject;
     GameObject m_factoryObject;
     GameObject m_ecoObject;
@@ -108,6 +109,7 @@ public class CellSelector : MonoBehaviour
         if (!m_islandObject)
             return;
 
+        m_islandAnimation = m_islandObject.GetComponent<Animation>();
         Transform[] children = m_islandObject.GetComponentsInChildren<Transform>();
         foreach (Transform c in children) {
             if (c.CompareTag(TreeTag))
@@ -151,6 +153,7 @@ public class CellSelector : MonoBehaviour
         }
         else {
             m_treesObject.SetActive(true);
+            m_islandAnimation.Play();
         }
         Construction = GameManager.TypeOfConstruction.None;
         
@@ -173,6 +176,7 @@ public class CellSelector : MonoBehaviour
         m_treesObject.SetActive(false);
         m_factoryObject.SetActive(true);
         Construction = GameManager.TypeOfConstruction.Factory;
+        m_islandAnimation.Play();
 
         
     }
@@ -194,6 +198,7 @@ public class CellSelector : MonoBehaviour
         m_treesObject.SetActive(true);
         m_ecoObject.SetActive(true);
         Construction = GameManager.TypeOfConstruction.EcoFactory;
+        m_islandAnimation.Play();
 
         
     }

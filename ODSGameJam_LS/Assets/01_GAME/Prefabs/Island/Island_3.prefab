@@ -40,6 +40,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7930390214267565843}
   - component: {fileID: 2603067701427203177}
+  - component: {fileID: 7363429879799418645}
   m_Layer: 0
   m_Name: Island3_Bad_Factory
   m_TagString: Factory
@@ -119,6 +120,19 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.2540059, y: 0.70742846, z: 4.4738474}
     m_Extent: {x: 5.8880844, y: 6.665181, z: 4.2308483}
   m_DirtyAABB: 0
+--- !u!114 &7363429879799418645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3351048890972738833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e16454d4e8f8ae04685ff6cd72933fcd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EcoFactory: 0
 --- !u!1 &4285621644086870230
 GameObject:
   m_ObjectHideFlags: 0
@@ -243,6 +257,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5862711107596983521}
   - component: {fileID: 7430955983032372593}
+  - component: {fileID: 7991522407463291985}
   m_Layer: 0
   m_Name: Island3_Modern_Fabric
   m_TagString: EcoFactory
@@ -317,6 +332,19 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.21185839, y: -0.10169077, z: 4.0139513}
     m_Extent: {x: 4.1356516, y: 4.610197, z: 3.8104272}
   m_DirtyAABB: 0
+--- !u!114 &7991522407463291985
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6314834001036141406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e16454d4e8f8ae04685ff6cd72933fcd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EcoFactory: 1
 --- !u!1 &6617126413805186824
 GameObject:
   m_ObjectHideFlags: 0
@@ -366,7 +394,7 @@ Animation:
   m_Animations:
   - {fileID: 1827226128182048838, guid: 6f6de922f6b6c7e4eb055d57d0fd2b76, type: 3}
   m_WrapMode: 0
-  m_PlayAutomatically: 1
+  m_PlayAutomatically: 0
   m_AnimatePhysics: 0
   m_CullingType: 1
 --- !u!1 &6803346036984950655

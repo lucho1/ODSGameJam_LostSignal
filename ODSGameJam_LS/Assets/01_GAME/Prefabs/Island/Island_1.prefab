@@ -211,6 +211,7 @@ GameObject:
   m_Component:
   - component: {fileID: 270469797032744578}
   - component: {fileID: 2944000367835464363}
+  - component: {fileID: 4918608237358523529}
   m_Layer: 0
   m_Name: Island1_Bad_Factory
   m_TagString: Factory
@@ -287,6 +288,19 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.6772044, y: 0.11666536, z: 4.746172}
     m_Extent: {x: 5.7468023, y: 4.8717237, z: 4.866358}
   m_DirtyAABB: 0
+--- !u!114 &4918608237358523529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5830912448370228644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e16454d4e8f8ae04685ff6cd72933fcd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EcoFactory: 0
 --- !u!1 &7150797179815301381
 GameObject:
   m_ObjectHideFlags: 0
@@ -335,7 +349,7 @@ Animation:
   m_Animations:
   - {fileID: 1827226128182048838, guid: bce2b86ec1743d14db9906a0ce0cc987, type: 3}
   m_WrapMode: 0
-  m_PlayAutomatically: 1
+  m_PlayAutomatically: 0
   m_AnimatePhysics: 0
   m_CullingType: 0
 --- !u!1 &7402514289171129403
@@ -348,6 +362,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1125408451153990687}
   - component: {fileID: 5968004327909746384}
+  - component: {fileID: 7164296466979569559}
   m_Layer: 0
   m_Name: Island1_Modern_Fabric
   m_TagString: EcoFactory
@@ -422,6 +437,19 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.50636256, y: -1.1058042, z: 3.510794}
     m_Extent: {x: 4.266012, y: 3.238384, z: 3.5125902}
   m_DirtyAABB: 0
+--- !u!114 &7164296466979569559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7402514289171129403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e16454d4e8f8ae04685ff6cd72933fcd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EcoFactory: 1
 --- !u!1 &8699440423213432123
 GameObject:
   m_ObjectHideFlags: 0
