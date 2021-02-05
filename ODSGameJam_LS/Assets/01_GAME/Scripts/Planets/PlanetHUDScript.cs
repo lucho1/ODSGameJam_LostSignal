@@ -156,7 +156,7 @@ public class PlanetHUDScript : MonoBehaviour
         healthText.color = Color.HSVToRGB(h, 1.0f, 1.0f);
         healthSlider.value = planetHealth / 100;
 
-        healthText.text = "Health: " + planetHealth.ToString() + " %";
+        healthText.text = "Health: " + planetHealth.ToString("0.##") + " %";
     }
 
 
@@ -172,6 +172,6 @@ public class PlanetHUDScript : MonoBehaviour
         PolutionSlider.value = planetPolution / 100;
         PolutionSlider_Back.value = 100;
 
-        PolutionText.text = "Polution: " + planetPolution.ToString() + " %";
+        PolutionText.text = "Polution: " + planetPolution.ToString("0.##") + " %";
     }
 }
