@@ -17,6 +17,7 @@ public class PlanetScript : MonoBehaviour
 
     //Events
     public UnityEvent planetDeath;
+    public UnityEvent planetContaminationChanged;
 
     //Timers
     private SimpleTimer healthRegenTimer;
@@ -108,6 +109,8 @@ public class PlanetScript : MonoBehaviour
                 currentHealth += GameOptions.PlanetRegeneration;
                 if (currentHealth > 100)
                     currentHealth = 100;
+
+                planetContaminationChanged.Invoke();
             }
         }
         if (currentHealth <= 0) {
