@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
 {
@@ -11,6 +12,17 @@ public class GameManager : Singleton<GameManager>
     }
 
     protected GameManager() {}
+
+    public static void FinishGame(bool victory) {
+        //Play win/lose sounds
+
+        GameResults.IsVictory = victory;
+        GameResults.TotalPlanets = PlanetList.Count;
+        GameResults.DeadPlanets = PlanetManager.DeadPlanets;
+        GameResults.FinalResources = CurrentResources;
+
+        SceneManager.LoadScene("GameOver");
+    }
 
     [SerializeField]
     private List<PlanetScript> m_planetList = new List<PlanetScript>();

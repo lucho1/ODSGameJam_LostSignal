@@ -65,6 +65,8 @@ public class ResourcesManager : Singleton<ResourcesManager>
     public static void SubstractDebt(int debt_amount)
     {
         GameManager.CurrentDebt -= debt_amount;
+        if (GameManager.CurrentDebt <= 0)
+            GameManager.FinishGame(true);
     }
 
     public static void AddDebt(int debt_amount)

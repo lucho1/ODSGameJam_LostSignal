@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class PlanetManager : Singleton<PlanetManager>
 {
@@ -15,7 +14,8 @@ public class PlanetManager : Singleton<PlanetManager>
     [SerializeField]
     private GameObject CurrentCamera;
 
-    private int DeadPlanets = 0;
+    private int m_deadPlanets = 0;
+    public static int DeadPlanets { get{ return Instance.m_deadPlanets;} set {Instance.m_deadPlanets = value;}}
 
     // Start is called before the first frame update
     void Start()
@@ -75,11 +75,9 @@ public class PlanetManager : Singleton<PlanetManager>
     }
 
     public void OnPlanetDeath() {
-        ++Instance.DeadPlanets;
+        ++DeadPlanets;
 
-        if (Instance.DeadPlanets == GameManager.PlanetList.Count) {
-            //myTODO Lucho: Play lose sound here
-            SceneManager.LoadScene("GameOver");
-        }
+        if (DeadPlanets == GameManager.PlanetList.Count)
+            GameManager.FinishGame(false);
     }
 }
