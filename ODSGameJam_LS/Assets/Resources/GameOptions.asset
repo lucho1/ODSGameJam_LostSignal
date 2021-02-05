@@ -29,6 +29,6 @@ MonoBehaviour:
   m_planetRegenationRefresh: 2
   m_refreshRate: 0.5
   m_resourceRefreshRate: 2
-  m_pollutionRefreshRate: 120
+  m_pollutionRefreshRate: 2
   m_ecoFactoryProduction: 5
   m_standardFactoryProduction: 10

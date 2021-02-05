@@ -60,6 +60,7 @@ public class PlanetScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        healthRegenTimer = new SimpleTimer();
         healthRegenTimer.Duration = GameOptions.PlanetRegenerationRefresh;
         healthRegenTimer.Begin();
         camera = GameObject.Find("Main Camera").GetComponent<Camera>();
