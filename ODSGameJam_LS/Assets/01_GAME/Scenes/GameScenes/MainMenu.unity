@@ -485,21 +485,21 @@ MonoBehaviour:
 
 
 
-    Orbit Planets - WASD/Right Click
+    Orbit Planets - WASD/Right Click + Zoom with Middle Mouse
+    Button
 
 
-    Switch Planets
-    - Left/Riht Arrows or Side-Buttons
+    Switch Planets - Left/Riht Arrows or Side-Buttons
 
 
 
 
-    Build, Send Resources to Save The
-    Earth and Colonize other  planets with the buttons on the HUD
+    Build,
+    Send Resources to Save The Earth and Colonize other  planets with the buttons
+    on the HUD
 
 
-    Factories
-    will produce proportionally to the planet''s life
+    Factories will produce proportionally to the planet''s life
 
 '
 --- !u!222 &113657835

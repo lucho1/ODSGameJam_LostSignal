@@ -16,7 +16,7 @@ MonoBehaviour:
   m_owedResources: 7000
   m_timerDuration: 30
   m_increasedDebt: 0.17
-  m_payingAmount: 300
+  m_payingAmount: 1000
   m_standardFactoryCost: 90
   m_ecoFactoryCost: 900
   m_factoryCostIncrease: 0.4
