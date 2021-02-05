@@ -1085,15 +1085,16 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Hi Victoria!\nYou\u2019ve been selected for the mission of Project: Rebirth.
-    Our planet is dying and we need to gather X resources to make the radical changes
-    needed to revert this situation D:\n\nWe can still build factories but that will
-    make our planet get worse and won\u2019t give us the necessary resources. We
-    have to change our production system to make affordable the construction of Ecological
-    Factories.\r\nWe can also colonize other planets to expand our production system,
-    but don\u2019t make the error we made in The Earth: don\u2019t fill planets with
-    polluting factories.\r\n\n\nGood Luck, we are on your hands! The humanity is
-    in your hands!\r\n"
+  m_Text: "Hi Victoria!\nYou\u2019ve been selected for the mission Project: Rebirth.
+    Our planet is dying, and we need to gather X resources to make the radical changes
+    needed to revert this situation D:\n\nWe could build factories, but that will
+    only make our planet get worse, and it will not give us the necessary resources.
+    We have to change our production system to make the construction of Ecological
+    Factories affordable again.\r\nEnter Project: Rebirth, we can colonize other
+    planets to expand our production system, but do not make the error we made on
+    Earth: do not fill planets with polluting factories, these planets are quite
+    smaller, and they WILL die!\r\n\n\nGood luck, our future is on your hands! Humanity
+    is on your hands!\r"
 --- !u!222 &644458313
 CanvasRenderer:
   m_ObjectHideFlags: 0
