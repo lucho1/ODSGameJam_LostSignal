@@ -444,7 +444,7 @@ MonoBehaviour:
   m_NewPlanetSound: {fileID: 8300000, guid: d60bdc20e54243a4c8fdd903c4556832, type: 3}
   m_FailedConstructionSound: {fileID: 8300000, guid: 0188cfea67e67ec438cf6c59bcd4e86c,
     type: 3}
-  m_ConstructionSound: {fileID: 8300000, guid: 12f9e214c7c129b488bfbc6cc2339479, type: 3}
+  m_ConstructionSound: {fileID: 8300000, guid: 6c20841bdf681b146a701c9b339e2988, type: 3}
   m_EcoConstructionSound: {fileID: 8300000, guid: e6a8e6e533ba55142addb2a55fea01f3,
     type: 3}
   m_TreeSound: {fileID: 8300000, guid: 152e06a5263cfc147ae0108ad762ae73, type: 3}
