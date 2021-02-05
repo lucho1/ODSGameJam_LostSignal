@@ -52,6 +52,8 @@ public class PlanetHUDScript : MonoBehaviour
         PopUpText           = PopUpText_Obj.GetComponent<Text>();
         planetNumber        = planetNumberObj.GetComponent<Text>();
 
+        PlanetManager.ChangedPlanet.AddListener(PlanetChanged);
+
         InvokeRepeating("SumResources", 1.0f, 0.7f);
    
     }
@@ -157,6 +159,10 @@ public class PlanetHUDScript : MonoBehaviour
         healthSlider.value = planetHealth / 100;
 
         healthText.text = "Health: " + planetHealth.ToString("0.##") + " %";
+
+        if (planetHealth == 0)
+            HealthIndicator.SetActive(false);
+
     }
 
 
@@ -178,5 +184,12 @@ public class PlanetHUDScript : MonoBehaviour
     public void LeaveGame()
     {
         GameManager.FinishGame(false);
+    }
+
+    public void PlanetChanged() {
+        if (GameManager.PlanetList[GameManager.CurrentPlanetIndex].currentHealth == 0)
+            HealthIndicator.SetActive(false);
+        else
+            HealthIndicator.SetActive(true);
     }
 }

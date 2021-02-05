@@ -225,6 +225,7 @@ public class PlanetScript : MonoBehaviour
 
         if (FactoriesSpawned > 2 && !tooManyFactories) {
             DialogWindow.ActivateDialog(DialogWindow.Instance.ManyFactoriesText);
+            tooManyFactories = true;
         }
 
         float Alpha = (FactoriesSpawned / 12.0f);

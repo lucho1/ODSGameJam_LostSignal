@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 
 public class PlanetManager : Singleton<PlanetManager>
 {
@@ -13,6 +14,9 @@ public class PlanetManager : Singleton<PlanetManager>
 
     [SerializeField]
     private GameObject CurrentCamera;
+
+    private UnityEvent m_ChangedPlanet = new UnityEvent();
+    public static UnityEvent ChangedPlanet {get {return Instance.m_ChangedPlanet;} set {Instance.m_ChangedPlanet = value;}}
 
     private int m_deadPlanets = 0;
     public static int DeadPlanets { get{ return Instance.m_deadPlanets;} set {Instance.m_deadPlanets = value;}}
@@ -72,6 +76,7 @@ public class PlanetManager : Singleton<PlanetManager>
             next_planet = GameManager.PreviousPlanet().CameraPosition;
 
         Instance.CurrentCamera.GetComponent<PlanetSwitchCameraScript>().SwitchPlanet(next_planet.transform);
+        ChangedPlanet.Invoke();
     }
 
     public void OnPlanetDeath() {
