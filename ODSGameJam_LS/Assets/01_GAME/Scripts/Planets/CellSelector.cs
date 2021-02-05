@@ -153,6 +153,7 @@ public class CellSelector : MonoBehaviour
         }
         else {
             m_treesObject.SetActive(true);
+            m_islandAnimation.Play();
         }
         Construction = GameManager.TypeOfConstruction.None;
         
