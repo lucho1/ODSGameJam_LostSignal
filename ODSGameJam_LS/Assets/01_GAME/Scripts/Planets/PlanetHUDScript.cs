@@ -6,43 +6,71 @@ using UnityEngine.UI;
 public class PlanetHUDScript : MonoBehaviour
 {
     [SerializeField]
-    private Button PayButtonBtn;
+    private Button PayButtonBtn, ColonizeButton;
 
     [SerializeField]
     private Text PayTimerText, CurrentResources, ResourcesToPay;
 
     [SerializeField]
-    private Text ColonizedPlanetsText;
+    private Text ColonizedPlanetsText, PopUpText_Obj;
 
     [SerializeField]
     private GameObject NextPlanetBtn, PrevPlanetBtn, HealthIndicator, PolutionIndicator;
 
+    private Image   healthImage;
+    private Slider  healthSlider;
+    private Text    healthText;
 
+    private Text    PolutionText;
+    private Slider  PolutionSlider;
+    private Slider  PolutionSlider_Back;
+    private Image   PolutionImage;
+    private Image   PolutionImage_Back;
 
-    private Image healthImage;
-    private Slider healthSlider;
-    private Text healthText;
-
-    private Text PolutionText;
-    private Slider PolutionSlider;
-    private Slider PolutionSlider_Back;
-    private Image PolutionImage;
-    private Image PolutionImage_Back;
+    //--- PopUpText vars ---
+    private Text PopUpText;
+    bool firstIteration = true;
+    int lastSum = 0;
+    int currSum;
+    float LastSumTime;
 
     private void Start()
     {
         ColonizedPlanetsText.text = "Colonized Planets: " + GameManager.PlanetList.Count.ToString();
 
-        healthImage =   HealthIndicator.GetComponentInChildren<Image>();
-        healthSlider =  HealthIndicator.GetComponent<Slider>();
-        healthText =    HealthIndicator.GetComponentInChildren<Text>();
+        healthImage         = HealthIndicator.GetComponentInChildren<Image>();
+        healthSlider        = HealthIndicator.GetComponent<Slider>();
+        healthText          = HealthIndicator.GetComponentInChildren<Text>();
 
-        PolutionImage = PolutionIndicator.GetComponentInChildren<Image>();
-        PolutionImage_Back = PolutionIndicator.GetComponentInChildren<Image>();
+        PolutionImage       = PolutionIndicator.GetComponentInChildren<Image>();
+        PolutionImage_Back  = PolutionIndicator.GetComponentInChildren<Image>();
 
-        PolutionSlider = PolutionIndicator.GetComponent<Slider>();
+        PolutionSlider      = PolutionIndicator.GetComponent<Slider>();
         PolutionSlider_Back = PolutionIndicator.GetComponent<Slider>();
-        PolutionText = PolutionIndicator.GetComponentInChildren<Text>();
+        PolutionText        = PolutionIndicator.GetComponentInChildren<Text>();
+
+        PopUpText           = PopUpText_Obj.GetComponent<Text>();
+
+        InvokeRepeating("SumResources", 1.0f, 0.7f);
+   
+    }
+
+    void SumResources()
+    {    
+        currSum = GameManager.CurrentResources - lastSum;
+        if (GameManager.CurrentResources - lastSum > 0 )
+        {
+            PopUpText.color = new Color(PopUpText.color.r, PopUpText.color.g, PopUpText.color.b, 1);
+            lastSum = GameManager.CurrentResources;
+            PopUpText.enabled = true;
+            PopUpText.text = "+" + currSum.ToString();
+        }else if (GameManager.CurrentResources - lastSum < 0)
+        {
+            PopUpText.color = new Color(PopUpText.color.r, 0, 0, 1);
+            lastSum = GameManager.CurrentResources;
+            PopUpText.enabled = true;
+            PopUpText.text = "-" + currSum.ToString();
+        }
     }
 
     // Update is called once per frame
@@ -54,10 +82,16 @@ public class PlanetHUDScript : MonoBehaviour
         else
             PayButtonBtn.interactable = false;
 
+        // --- Colonize Button ---
+        if (GameManager.CurrentResources >= GameOptions.PlanetCost)
+            ColonizeButton.interactable = true;
+        else
+            ColonizeButton.interactable = false;
+
         // --- Current Resources & Debt Text + Timer ---
-        CurrentResources.text = GameManager.CurrentResources.ToString();
-        ResourcesToPay.text = GameManager.CurrentDebt.ToString();
-        PayTimerText.text = ResourcesManager.DebtTimer.GetTimeString();
+        CurrentResources.text   = GameManager.CurrentResources.ToString();
+        ResourcesToPay.text     = GameManager.CurrentDebt.ToString();
+        PayTimerText.text       = ResourcesManager.DebtTimer.GetTimeString();
 
         // --- Next/Prev Buttons ---
         if (!NextPlanetBtn.activeInHierarchy && !PrevPlanetBtn.activeInHierarchy)
@@ -74,6 +108,9 @@ public class PlanetHUDScript : MonoBehaviour
 
         // --- Polution Bar ---
         UpdatePolutionIndicator();
+
+        // ---PopUpText ---
+        PopUpText.color = new Color(PopUpText.color.r, PopUpText.color.g, PopUpText.color.b, PopUpText.color.a - 0.5f*Time.deltaTime);
     }
 
     public void PayButton()
@@ -97,9 +134,14 @@ public class PlanetHUDScript : MonoBehaviour
 
     public void ColonizePlanetButton()
     {
-        PlanetManager.CreatePlanet();
-        ColonizedPlanetsText.text = "Colonized Planets: " + GameManager.PlanetList.Count.ToString();
+        if (GameManager.CurrentResources >= GameOptions.PlanetCost)
+        {
+            ResourcesManager.SubstractResources(GameOptions.PlanetCost);
+            PlanetManager.CreatePlanet();
+            ColonizedPlanetsText.text = "Colonized Planets: " + GameManager.PlanetList.Count.ToString();
+        }
     }
+
     public void UpdateHealthIndicator()
     {
         float planetHealth = GameManager.PlanetList[GameManager.CurrentPlanetIndex].currentHealth;
