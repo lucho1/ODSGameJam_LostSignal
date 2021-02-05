@@ -21,18 +21,43 @@ public class PlanetManager : Singleton<PlanetManager>
     private int m_deadPlanets = 0;
     public static int DeadPlanets { get{ return Instance.m_deadPlanets;} set {Instance.m_deadPlanets = value;}}
 
+    private bool ShowText1 = true, ShowText2 = false;
+    private float Text2Time = 0.0f, Text1Time = 0.0f;
+
     // Start is called before the first frame update
     void Start()
     {
         //(GameManager.PlanetList).Add(InitialPlanet); //Sergi: Now done in Start of PlanetScript
         InitialPlanet.AttachCamera();
         InitialPlanet.GetComponent<PlanetScript>().planetDeath.AddListener(Instance.OnPlanetDeath);
-
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(ShowText1 && Text1Time < 1.5f)
+            Text1Time += Time.deltaTime;
+
+        if (ShowText1 && Text1Time > 1.5f)
+        {
+            DialogWindow.ActivateDialog(DialogWindow.Instance.GameStartText);
+            ShowText1 = false;
+            ShowText2 = true;
+            Text1Time = 0.0f;
+        }
+
+        if (ShowText2 && Text2Time < 150)
+            Text2Time += Time.deltaTime;
+
+        if (ShowText2 && Text2Time > 150)
+        {
+            DialogWindow.ActivateDialog(DialogWindow.Instance.GameStartText2);
+            ShowText2 = false;
+            Text2Time = 0.0f;
+        }
+
+
+
         // --- Planet Switch ---
         if (GameManager.PlanetList.Count > 1)
         {

@@ -39,6 +39,10 @@ public class ResourcesManager : Singleton<ResourcesManager>
         InvokeRepeating("UpdateResources", 1.0f, GameOptions.RefreshRate);
     }
 
+    void OnDestroy() {
+        DebtTimer = null;
+    }
+
     void UpdateResources() //called every x frames
     {
         GameManager.CurrentResources = Instance.resources;
