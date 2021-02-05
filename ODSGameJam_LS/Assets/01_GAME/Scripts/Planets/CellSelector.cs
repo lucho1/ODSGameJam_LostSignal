@@ -165,8 +165,7 @@ public class CellSelector : MonoBehaviour
         }
         Construction = GameManager.TypeOfConstruction.None;
 
-        // Todo Lucho: Put Nature Sound here
-        SoundsManager.PlaySound(SoundsManager.ConstructionSound);
+        SoundsManager.PlaySound(SoundsManager.TreeSound);
     }
 
     void BuildFactory() {
@@ -208,7 +207,7 @@ public class CellSelector : MonoBehaviour
         m_ecoObject.SetActive(true);
         Construction = GameManager.TypeOfConstruction.EcoFactory;
         m_islandAnimation.Play();
-        SoundsManager.PlaySound(SoundsManager.ConstructionSound);
+        SoundsManager.PlaySound(SoundsManager.EcoConstructionSound);
     }
 
     void OnPlanetDeath() {
