@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: GameOptions
   m_EditorClassIdentifier: 
   m_startingFunds: 180
-  m_owedResources: 5000
+  m_owedResources: 7000
   m_timerDuration: 30
   m_increasedDebt: 0.17
   m_payingAmount: 300
@@ -31,5 +31,5 @@ MonoBehaviour:
   m_refreshRate: 0.5
   m_resourceRefreshRate: 1
   m_pollutionRefreshRate: 1
-  m_ecoFactoryProduction: 9
-  m_standardFactoryProduction: 12
+  m_ecoFactoryProduction: 17
+  m_standardFactoryProduction: 20
