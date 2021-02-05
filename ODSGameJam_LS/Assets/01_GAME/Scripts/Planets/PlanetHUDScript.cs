@@ -174,4 +174,9 @@ public class PlanetHUDScript : MonoBehaviour
 
         PolutionText.text = "Polution: " + planetPolution.ToString("0.##") + " %";
     }
+
+    public void LeaveGame()
+    {
+        GameManager.FinishGame(false);
+    }
 }
