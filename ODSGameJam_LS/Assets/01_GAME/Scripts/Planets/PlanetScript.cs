@@ -53,6 +53,8 @@ public class PlanetScript : MonoBehaviour
     [System.NonSerialized]
     public int GroundSpawned;
 
+    static bool tooManyFactories = false;
+
     private void Awake()
     {
         MaxGround = Random.Range(5, 8);
@@ -220,6 +222,11 @@ public class PlanetScript : MonoBehaviour
 
     public void AddFactory() {
         ++FactoriesSpawned;
+
+        if (FactoriesSpawned > 2 && !tooManyFactories) {
+            DialogWindow.ActivateDialog(DialogWindow.Instance.ManyFactoriesText);
+        }
+
         float Alpha = (FactoriesSpawned / 12.0f);
         var main = m_ContaminationFog.main;
         Color myColor = main.startColor.color;

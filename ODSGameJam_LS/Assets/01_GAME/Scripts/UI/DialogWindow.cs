@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DialogWindow : MonoBehaviour
+public class DialogWindow : Singleton<DialogWindow>
 {
     public TMPro.TextMeshProUGUI dialog;
     public float disappearTime = 5.0f;
@@ -19,7 +19,7 @@ public class DialogWindow : MonoBehaviour
     [HideInInspector] public string GameStartText2 = "If you run out of space in the planet, try colonizing other planets to build there. Make Valentina Tereshkova proud!";
     [HideInInspector]public string FirstfactoryText = "Wow! Look at those factories! I hope those chimneys have some filters though.Which by the way, were invented by Mary Walton in 1870. That's it, some free knowledge for you.";
     [HideInInspector]public string ManyFactoriesText = "Be careful with those factories, they polute a lot. Wangari Maathai wouldn't like it. She won a nobel prize, you probably don't know her...";
-    [HideInInspector]public string AnotherOneText = "And aonther one!";
+    [HideInInspector]public string AnotherOneText = "And another one!";
     [HideInInspector]public string FirstCleanFactorytext = "Hey, that factory does not polute at all! Nice!";
     [HideInInspector]public string CleanFactoryText = "This is the legacy of Hertha Marks!";
     [HideInInspector]public string CleanFactoryText2 = "Give me that green energy baby!";
@@ -41,20 +41,21 @@ public class DialogWindow : MonoBehaviour
             DeactivateDialog();
     }
 
-    void ActivateDialog()
+    public static void ActivateDialog(string text)
     {
-        nameGO.SetActive(true);
-        dialogGO.SetActive(true);
-        imageGO.SetActive(true);
-        closeButton.SetActive(true);
-        dialogTimer = Time.time;
+        Instance.dialog.text = text;
+        Instance.nameGO.SetActive(true);
+        Instance.dialogGO.SetActive(true);
+        Instance.imageGO.SetActive(true);
+        Instance.closeButton.SetActive(true);
+        Instance.dialogTimer = Time.time;
     }
 
-    void DeactivateDialog()
+    public static void DeactivateDialog()
     {
-        nameGO.SetActive(false);
-        dialogGO.SetActive(false);
-        imageGO.SetActive(false);
-        closeButton.SetActive(false);
+        Instance.nameGO.SetActive(false);
+        Instance.dialogGO.SetActive(false);
+        Instance.imageGO.SetActive(false);
+        Instance.closeButton.SetActive(false);
     }
 }

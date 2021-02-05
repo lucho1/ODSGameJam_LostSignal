@@ -54,6 +54,23 @@ MonoBehaviour:
   dialogGO: {fileID: 6943189500167900789}
   imageGO: {fileID: 6943189500802989917}
   closeButton: {fileID: 6943189499451171020}
+  GameStartText: We need some energy! Start builing factories.
+  GameStartText2: If you run out of space in the planet, try colonizing other planets
+    to build there. Make Valentina Tereshkova proud!
+  FirstfactoryText: Wow! Look at those factories! I hope those chimneys have some
+    filters though.Which by the way, were invented by Mary Walton in 1870. That's
+    it, some free knowledge for you.
+  ManyFactoriesText: Be careful with those factories, they polute a lot. Wangari
+    Maathai wouldn't like it. She won a nobel prize, you probably don't know her...
+  AnotherOneText: And aonther one!
+  FirstCleanFactorytext: Hey, that factory does not polute at all! Nice!
+  CleanFactoryText: This is the legacy of Hertha Marks!
+  CleanFactoryText2: Give me that green energy baby!
+  FactoryDestroyed: Well, there it goes a lot of energy income, but reducing the
+    polution is more important. Greta Thumberg would be proud for sure.
+  FactoryDestroyed2: Down it goes!
+  FactoryDestroyed3: We might run out of energy but I have to admit, it is really
+    fun to see things go down.
 --- !u!1 &6943189499162985560
 GameObject:
   m_ObjectHideFlags: 0
@@ -312,42 +329,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6943189499451171020}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 6943189500292943593}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 6943189500167900789}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 6943189500802989917}
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 6020298102059098204}
+        m_MethodName: DeactivateDialog
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

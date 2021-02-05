@@ -37,6 +37,8 @@ public class CellSelector : MonoBehaviour
     GameObject m_ecoObject;
     GameObject m_groundObject;
 
+    static bool firstFactory, firstEco, firstDestroy = false;
+
     GameManager.TypeOfConstruction Construction = GameManager.TypeOfConstruction.None;
 
     // Start is called before the first frame update
@@ -163,6 +165,11 @@ public class CellSelector : MonoBehaviour
             return;
         }
 
+        if (!firstDestroy) {
+            firstDestroy = true;
+            DialogWindow.ActivateDialog(DialogWindow.Instance.FactoryDestroyed);
+        } 
+
         ResourcesManager.SubstractResources(GameOptions.DestructionCost);
         
         m_ecoObject.SetActive(false);
@@ -194,6 +201,11 @@ public class CellSelector : MonoBehaviour
             return;
         }
 
+        if (!firstFactory) {
+            firstFactory = true;
+            DialogWindow.ActivateDialog(DialogWindow.Instance.FirstfactoryText);
+        }
+
         ResourcesManager.SubstractResources(GameOptions.StandardFactoryCost);
 
         m_islandObject.SetActive(true);
@@ -217,6 +229,11 @@ public class CellSelector : MonoBehaviour
             SoundsManager.PlaySound(SoundsManager.FailedConstructionSound);
             m_islandAnimation.Play();
             return;
+        }
+
+        if (!firstEco) {
+            firstEco = true;
+            DialogWindow.ActivateDialog(DialogWindow.Instance.FirstCleanFactorytext);
         }
 
         ResourcesManager.SubstractResources(GameOptions.EcoFactoryCost);
