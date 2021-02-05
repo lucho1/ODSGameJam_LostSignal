@@ -107,7 +107,7 @@ public class PlanetScript : MonoBehaviour
         if (currentVelocity.x > 0.0001f)
         {
             currentVelocity.x = currentVelocity.x - deaceleration * Time.deltaTime;
-            Debug.Log(currentVelocity.x);
+            //Debug.Log(currentVelocity.x);
             if (currentVelocity.x < 0.0001f)
                 currentVelocity.x = 0.0000f;
         }

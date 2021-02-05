@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class PlanetHUDScript : MonoBehaviour
 {
     [SerializeField]
-    private Button PayButtonBtn;
+    private Button PayButtonBtn, ColonizeButton;
 
     [SerializeField]
     private Text PayTimerText, CurrentResources, ResourcesToPay;
@@ -82,6 +82,12 @@ public class PlanetHUDScript : MonoBehaviour
         else
             PayButtonBtn.interactable = false;
 
+        // --- Colonize Button ---
+        if (GameManager.CurrentResources >= GameOptions.PlanetCost)
+            ColonizeButton.interactable = true;
+        else
+            ColonizeButton.interactable = false;
+
         // --- Current Resources & Debt Text + Timer ---
         CurrentResources.text   = GameManager.CurrentResources.ToString();
         ResourcesToPay.text     = GameManager.CurrentDebt.ToString();
@@ -128,9 +134,14 @@ public class PlanetHUDScript : MonoBehaviour
 
     public void ColonizePlanetButton()
     {
-        PlanetManager.CreatePlanet();
-        ColonizedPlanetsText.text = "Colonized Planets: " + GameManager.PlanetList.Count.ToString();
+        if (GameManager.CurrentResources >= GameOptions.PlanetCost)
+        {
+            ResourcesManager.SubstractResources(GameOptions.PlanetCost);
+            PlanetManager.CreatePlanet();
+            ColonizedPlanetsText.text = "Colonized Planets: " + GameManager.PlanetList.Count.ToString();
+        }
     }
+
     public void UpdateHealthIndicator()
     {
         float planetHealth = GameManager.PlanetList[GameManager.CurrentPlanetIndex].currentHealth;

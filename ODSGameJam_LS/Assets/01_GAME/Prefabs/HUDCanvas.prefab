@@ -1955,11 +1955,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PayButtonBtn: {fileID: 3630584083068124270}
+  ColonizeButton: {fileID: 7010791659932198826}
   PayTimerText: {fileID: 4159272255552347811}
   CurrentResources: {fileID: 4213011030625992094}
   ResourcesToPay: {fileID: 5666204579798497546}
   ColonizedPlanetsText: {fileID: 7010791660304808097}
-  PopUpText_Obj: {fileID: 0}
+  PopUpText_Obj: {fileID: 233269669253011029}
   NextPlanetBtn: {fileID: 7010791660433148318}
   PrevPlanetBtn: {fileID: 7010791659161779819}
   HealthIndicator: {fileID: 7010791660218224163}
@@ -2193,7 +2194,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 0.106918156, g: 0.6792453, b: 0, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
