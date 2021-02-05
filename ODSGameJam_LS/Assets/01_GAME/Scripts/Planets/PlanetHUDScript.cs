@@ -91,7 +91,7 @@ public class PlanetHUDScript : MonoBehaviour
         // --- Current Resources & Debt Text + Timer ---
         CurrentResources.text   = GameManager.CurrentResources.ToString();
         ResourcesToPay.text     = GameManager.CurrentDebt.ToString();
-        PayTimerText.text       = ResourcesManager.DebtTimer.GetTimeString();
+        //PayTimerText.text       = ResourcesManager.DebtTimer.GetTimeString();
 
         // --- Next/Prev Buttons ---
         if (!NextPlanetBtn.activeInHierarchy && !PrevPlanetBtn.activeInHierarchy)

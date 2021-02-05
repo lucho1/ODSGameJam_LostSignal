@@ -27,6 +27,12 @@ public class PlanetScript : MonoBehaviour
     public float deaceleration = 0.4f;
     private bool rotatingPlanet = false;
     private Vector2 currentVelocity = new Vector2(0, 0);
+    public float wasdVelocity = 0.4f;
+    public float zoomVelocity = 50.0f;
+    public float zoomDeaceleration = 2.8f;
+    private float zoomNormVelocity=0.0f;
+    private float minCameraDistane;
+    private float maxCameraDistane;
 
     [Space(10)]
     public Camera camera;
@@ -40,12 +46,6 @@ public class PlanetScript : MonoBehaviour
     [System.NonSerialized]
     public int GroundSpawned;
 
-    //UI
-    //public GameObject healthIndicator;
-    //private Image healthImage;
-    //private Slider healthSlider;
-    //private Text healthText;
-
     private void Awake()
     {
         MaxGround = Random.Range(5, 8);
@@ -56,17 +56,14 @@ public class PlanetScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //healthImage = healthIndicator.GetComponentInChildren<Image>();
-        //healthSlider = healthIndicator.GetComponent<Slider>();
-        //healthText = healthIndicator.GetComponentInChildren<Text>();
-
         camera = GameObject.Find("Main Camera").GetComponent<Camera>();
+        minCameraDistane = (transform.position - CameraPosition.transform.position).magnitude*0.75f;
+        maxCameraDistane = (transform.position - CameraPosition.transform.position).magnitude * 1.5f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        //UpdateHealthIndicator();
 
         if (Time.time - lastResourceUpdateTime > resourceUpdatePeriod)
         {
@@ -88,7 +85,8 @@ public class PlanetScript : MonoBehaviour
                 currentVelocity.y = Input.GetAxis("Mouse Y");
             }
             RotatePlanet();
-
+            HoldWASDInput();
+            HoldCameraZoom();
             if (!rotatingPlanet)
                 UpdateSpeed();
         }
@@ -107,7 +105,6 @@ public class PlanetScript : MonoBehaviour
         if (currentVelocity.x > 0.0001f)
         {
             currentVelocity.x = currentVelocity.x - deaceleration * Time.deltaTime;
-            //Debug.Log(currentVelocity.x);
             if (currentVelocity.x < 0.0001f)
                 currentVelocity.x = 0.0000f;
         }
@@ -143,22 +140,52 @@ public class PlanetScript : MonoBehaviour
     public void AttachCamera()
     {
         cameraAttached = true;
-        //healthIndicator.SetActive(true);
     }
 
     public void DetachCamera()
     {
         cameraAttached = false;
-        //healthIndicator.SetActive(false);
     }
 
-    //public void UpdateHealthIndicator()
-    //{
-    //    float h = currentHealth / 360;// h = 100 --> green ,  h =0 --> red
-      
-    //    healthImage.color = Color.HSVToRGB(h,1.0f,1.0f);
-    //    healthSlider.value = currentHealth / 100;
+   public void HoldWASDInput()
+    {
+        //Horizontal velocity
+        if (Input.GetKey(KeyCode.A) == true && Input.GetKey(KeyCode.D) == false)
+            currentVelocity.x = -wasdVelocity;
+        else if (Input.GetKey(KeyCode.A) == false && Input.GetKey(KeyCode.D) == true)
+            currentVelocity.x = wasdVelocity;
 
-    //    healthText.text = "Health: " + currentHealth.ToString() + " %";
-    //}
+        //Vertical velocity
+        if (Input.GetKey(KeyCode.W) == true && Input.GetKey(KeyCode.S) == false)
+            currentVelocity.y = wasdVelocity;
+        else if (Input.GetKey(KeyCode.W) == false && Input.GetKey(KeyCode.S) == true)
+            currentVelocity.y = -wasdVelocity;
+    }
+
+    public void HoldCameraZoom()
+    {
+        //Hold mousewheel input
+        if (Mathf.Abs(Input.GetAxis("Mouse ScrollWheel"))*10 > Mathf.Abs(zoomNormVelocity))
+            zoomNormVelocity= Input.GetAxis("Mouse ScrollWheel")*10/*don't blame me, blame unity*/;
+
+
+        if ((transform.position - camera.transform.position).magnitude > minCameraDistane && zoomNormVelocity > 0 ||
+            (transform.position - camera.transform.position).magnitude < maxCameraDistane && zoomNormVelocity < 0)
+            camera.gameObject.transform.position += camera.gameObject.transform.forward * zoomNormVelocity * zoomVelocity * Time.deltaTime;
+
+        //Reduce velocity depending on the deaceleration
+
+        if (zoomNormVelocity > 0)
+        {
+            zoomNormVelocity -= zoomDeaceleration * Time.deltaTime;
+            if (zoomNormVelocity < 0)
+                zoomNormVelocity = 0.0f;
+        }
+        else if (zoomNormVelocity < 0)
+        {
+            zoomNormVelocity += zoomDeaceleration * Time.deltaTime;
+            if (zoomNormVelocity > 0)
+                zoomNormVelocity = 0.0f;
+        }
+    }
 }
