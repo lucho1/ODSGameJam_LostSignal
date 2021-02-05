@@ -93,12 +93,14 @@ public class CellSelector : MonoBehaviour
     void OnMouseDown() {
         if (!isAlive) {
             SoundsManager.PlaySound(SoundsManager.FailedConstructionSound);
+            m_islandAnimation.Play();
             return;
         }
 
         switch (GameManager.SelectedConstruction) {
             default:
                 SoundsManager.PlaySound(SoundsManager.FailedConstructionSound);
+                m_islandAnimation.Play();
                 break;
             case GameManager.TypeOfConstruction.Destroy:
                 DestroyBuiltFactory();
@@ -144,10 +146,12 @@ public class CellSelector : MonoBehaviour
     void DestroyBuiltFactory() {
         if (Construction == GameManager.TypeOfConstruction.None) {
             SoundsManager.PlaySound(SoundsManager.FailedConstructionSound);
+            m_islandAnimation.Play();
             return;
         }
         if (GameManager.CurrentResources < GameOptions.DestructionCost) {
             SoundsManager.PlaySound(SoundsManager.FailedConstructionSound);
+            m_islandAnimation.Play();
             return;
         }
 
@@ -171,10 +175,12 @@ public class CellSelector : MonoBehaviour
     void BuildFactory() {
         if (Construction == GameManager.TypeOfConstruction.Factory) {
             SoundsManager.PlaySound(SoundsManager.FailedConstructionSound);
+            m_islandAnimation.Play();
             return;
         }
         if (GameManager.CurrentResources < GameOptions.StandardFactoryCost) {
             SoundsManager.PlaySound(SoundsManager.FailedConstructionSound);
+            m_islandAnimation.Play();
             return;
         }
 
@@ -192,10 +198,12 @@ public class CellSelector : MonoBehaviour
     void BuildEcoFactory() {
         if (Construction == GameManager.TypeOfConstruction.EcoFactory) {
             SoundsManager.PlaySound(SoundsManager.FailedConstructionSound);
+            m_islandAnimation.Play();
             return;
         }
         if (GameManager.CurrentResources < GameOptions.EcoFactoryCost) {
             SoundsManager.PlaySound(SoundsManager.FailedConstructionSound);
+            m_islandAnimation.Play();
             return;
         }
 

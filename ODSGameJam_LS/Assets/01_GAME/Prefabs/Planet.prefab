@@ -5527,7 +5527,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0, g: 0, b: 0, a: 0.6117647}
+      maxColor: {r: 0, g: 0, b: 0, a: 0}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -10570,6 +10570,10 @@ MonoBehaviour:
   planetHealthRecoveryRate: 5
   currentHealth: 100
   currentPolution: 0
+  planetAlive: 1
+  planetDeath:
+    m_PersistentCalls:
+      m_Calls: []
   resourceUpdatePeriod: 1
   rotationSpeed: 5
   deaceleration: 0.4
@@ -10578,6 +10582,7 @@ MonoBehaviour:
   zoomDeaceleration: 2.8
   camera: {fileID: 0}
   CameraPosition: {fileID: 7223015370203824838}
+  m_ContaminationFog: {fileID: 29014730399371344}
 --- !u!23 &4276244067944920122
 MeshRenderer:
   m_ObjectHideFlags: 0
