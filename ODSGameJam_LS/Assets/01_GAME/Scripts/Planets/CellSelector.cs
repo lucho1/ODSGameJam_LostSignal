@@ -90,8 +90,8 @@ public class CellSelector : MonoBehaviour
     void OnMouseDown() {
         switch (GameManager.SelectedConstruction) {
             default:
-            //Play sound maybe
-            break;
+                SoundsManager.PlaySound(SoundsManager.FailedConstructionSound);
+                break;
             case GameManager.TypeOfConstruction.Destroy:
                 DestroyBuiltFactory();
                 break;
@@ -135,11 +135,11 @@ public class CellSelector : MonoBehaviour
 
     void DestroyBuiltFactory() {
         if (Construction == GameManager.TypeOfConstruction.None) {
-            //Play failure sound or smth
+            SoundsManager.PlaySound(SoundsManager.FailedConstructionSound);
             return;
         }
         if (GameManager.CurrentResources < GameOptions.DestructionCost) {
-            //Play failure sound or smth
+            SoundsManager.PlaySound(SoundsManager.FailedConstructionSound);
             return;
         }
 
@@ -156,16 +156,18 @@ public class CellSelector : MonoBehaviour
             m_islandAnimation.Play();
         }
         Construction = GameManager.TypeOfConstruction.None;
-        
+
+        // Todo Lucho: Put Nature Sound here
+        SoundsManager.PlaySound(SoundsManager.ConstructionSound);
     }
 
     void BuildFactory() {
         if (Construction == GameManager.TypeOfConstruction.Factory) {
-            //Play failure sound or smth
+            SoundsManager.PlaySound(SoundsManager.FailedConstructionSound);
             return;
         }
         if (GameManager.CurrentResources < GameOptions.StandardFactoryCost) {
-            //Play failure sound or smth
+            SoundsManager.PlaySound(SoundsManager.FailedConstructionSound);
             return;
         }
 
@@ -177,17 +179,16 @@ public class CellSelector : MonoBehaviour
         m_factoryObject.SetActive(true);
         Construction = GameManager.TypeOfConstruction.Factory;
         m_islandAnimation.Play();
-
-        
+        SoundsManager.PlaySound(SoundsManager.ConstructionSound);
     }
 
     void BuildEcoFactory() {
         if (Construction == GameManager.TypeOfConstruction.EcoFactory) {
-            //Play failure sound or smth
+            SoundsManager.PlaySound(SoundsManager.FailedConstructionSound);
             return;
         }
         if (GameManager.CurrentResources < GameOptions.EcoFactoryCost) {
-            //Play failure sound or smth
+            SoundsManager.PlaySound(SoundsManager.FailedConstructionSound);
             return;
         }
 
@@ -199,7 +200,6 @@ public class CellSelector : MonoBehaviour
         m_ecoObject.SetActive(true);
         Construction = GameManager.TypeOfConstruction.EcoFactory;
         m_islandAnimation.Play();
-
-        
+        SoundsManager.PlaySound(SoundsManager.ConstructionSound);
     }
 }

@@ -58,6 +58,7 @@ public class PlanetManager : Singleton<PlanetManager>
         if (GameManager.PlanetList.Count <= 1)
             return;
 
+        SoundsManager.PlaySound(SoundsManager.NewPlanetSound);
         GameManager.PlanetList[GameManager.CurrentPlanetIndex].DetachCamera();
         GameObject next_planet;
 

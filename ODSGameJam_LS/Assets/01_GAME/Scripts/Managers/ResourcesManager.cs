@@ -58,6 +58,7 @@ public class ResourcesManager : Singleton<ResourcesManager>
 
     public static void SubstractResources(int amount) //called from other scripts
     {
+        UISoundsManager.PlaySound(UISoundsManager.PaySound);
         Instance.resources = Instance.resources - amount;
     }
 
@@ -68,6 +69,7 @@ public class ResourcesManager : Singleton<ResourcesManager>
 
     public static void AddDebt(int debt_amount)
     {
+        UISoundsManager.PlaySound(UISoundsManager.DebtIncreasesSound);
         GameManager.CurrentDebt += debt_amount;
     }
 }
