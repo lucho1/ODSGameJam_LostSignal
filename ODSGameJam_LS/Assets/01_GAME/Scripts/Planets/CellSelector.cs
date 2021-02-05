@@ -22,6 +22,8 @@ public class CellSelector : MonoBehaviour
     public string FactoryTag;
     [TagSelector]
     public string EcoTag;
+    [TagSelector]
+    public string GroundTag;
 
     TypeOfCell type;
     bool isWater;
@@ -33,6 +35,7 @@ public class CellSelector : MonoBehaviour
     GameObject m_treesObject;
     GameObject m_factoryObject;
     GameObject m_ecoObject;
+    Material m_groundMaterial;
 
     GameManager.TypeOfConstruction Construction = GameManager.TypeOfConstruction.None;
 
@@ -128,6 +131,8 @@ public class CellSelector : MonoBehaviour
                 m_factoryObject = c.gameObject;
             else if (c.CompareTag(EcoTag))
                 m_ecoObject = c.gameObject;
+            else if (c.CompareTag(GroundTag))
+                m_groundMaterial = c.GetComponent<Material>();
         }
 
         if (m_factoryObject)
