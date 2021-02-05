@@ -15,7 +15,7 @@ public class PlanetHUDScript : MonoBehaviour
     private Text ColonizedPlanetsText, PopUpText_Obj, planetNumber;
 
     [SerializeField]
-    private GameObject NextPlanetBtn, PrevPlanetBtn, HealthIndicator, PolutionIndicator, planetNumberObj;
+    private GameObject NextPlanetBtn, PrevPlanetBtn, HealthIndicator, PolutionIndicator, planetNumberObj, DeadPlanetIndicator;
 
     private Image   healthImage;
     private Slider  healthSlider;
@@ -160,8 +160,10 @@ public class PlanetHUDScript : MonoBehaviour
 
         healthText.text = "Health: " + planetHealth.ToString("0.##") + " %";
 
-        if (planetHealth == 0)
+        if (planetHealth == 0) {
             HealthIndicator.SetActive(false);
+            DeadPlanetIndicator.SetActive(true);
+        }
 
     }
 
@@ -187,9 +189,13 @@ public class PlanetHUDScript : MonoBehaviour
     }
 
     public void PlanetChanged() {
-        if (GameManager.PlanetList[GameManager.CurrentPlanetIndex].currentHealth == 0)
+        if (GameManager.PlanetList[GameManager.CurrentPlanetIndex].currentHealth == 0) {
             HealthIndicator.SetActive(false);
-        else
+            DeadPlanetIndicator.SetActive(true);
+        }
+        else {
             HealthIndicator.SetActive(true);
+            DeadPlanetIndicator.SetActive(false);
+        }
     }
 }
