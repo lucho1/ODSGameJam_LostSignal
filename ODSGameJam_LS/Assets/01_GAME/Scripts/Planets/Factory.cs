@@ -23,7 +23,7 @@ public class Factory : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!myPlanet || myPlanet.currentHealth == 0) {
+        if (!myPlanet || myPlanet.currentHealth <= 0) {
             this.enabled = false;
             return;
         }
