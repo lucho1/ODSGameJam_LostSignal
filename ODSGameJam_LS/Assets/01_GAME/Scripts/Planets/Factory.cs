@@ -32,11 +32,14 @@ public class Factory : MonoBehaviour
         if (Time.time >= m_nextContaminationTime)
         {
             m_nextContaminationTime = Time.time + GameOptions.PollutionRefreshRate;
-            if (EcoFactory)
-                m_nextContaminationTime = Time.time + GameOptions.EcoFactoryContamination;
-            else
-                m_nextContaminationTime = Time.time + GameOptions.StandardFactoryContamination;
-            myPlanet.currentHealth -= GameOptions.StandardFactoryContamination;
+            if (EcoFactory) {
+                myPlanet.currentHealth -= GameOptions.EcoFactoryContamination;
+                myPlanet.currentPolution += GameOptions.EcoFactoryContamination;
+            }
+            else {
+                myPlanet.currentHealth -= GameOptions.StandardFactoryContamination;
+                myPlanet.currentPolution += GameOptions.StandardFactoryContamination;
+            }
         }
 
         float efficiency = (myPlanet.currentHealth / 100.0f) * (1 + (myPlanet.PlanetId * GameOptions.PlanetEfficiencyIncrease));
