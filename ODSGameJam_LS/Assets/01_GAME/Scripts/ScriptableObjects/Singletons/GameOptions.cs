@@ -102,6 +102,17 @@ public class GameOptions : ScriptableObject
     }
 
     [SerializeField]
+    private float m_factoryCostIncrease;
+    public static float FactoryCostIncrease {
+        get {
+            return Instance.m_factoryCostIncrease;
+        }
+        set {
+            Instance.m_factoryCostIncrease = value;
+        }
+    }
+
+    [SerializeField]
     private int m_destructionCost;
     public static int DestructionCost {
         get {
