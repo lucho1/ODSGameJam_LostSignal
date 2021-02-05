@@ -15,12 +15,19 @@ public class PlanetHUDScript : MonoBehaviour
     private Text ColonizedPlanetsText;
 
     [SerializeField]
-    private GameObject NextPlanetBtn, PrevPlanetBtn, HealthIndicator;
+    private GameObject NextPlanetBtn, PrevPlanetBtn, HealthIndicator, PolutionIndicator;
+
+
 
     private Image healthImage;
     private Slider healthSlider;
     private Text healthText;
 
+    private Text PolutionText;
+    private Slider PolutionSlider;
+    private Slider PolutionSlider_Back;
+    private Image PolutionImage;
+    private Image PolutionImage_Back;
 
     private void Start()
     {
@@ -29,6 +36,13 @@ public class PlanetHUDScript : MonoBehaviour
         healthImage =   HealthIndicator.GetComponentInChildren<Image>();
         healthSlider =  HealthIndicator.GetComponent<Slider>();
         healthText =    HealthIndicator.GetComponentInChildren<Text>();
+
+        PolutionImage = PolutionIndicator.GetComponentInChildren<Image>();
+        PolutionImage_Back = PolutionIndicator.GetComponentInChildren<Image>();
+
+        PolutionSlider = PolutionIndicator.GetComponent<Slider>();
+        PolutionSlider_Back = PolutionIndicator.GetComponent<Slider>();
+        PolutionText = PolutionIndicator.GetComponentInChildren<Text>();
     }
 
     // Update is called once per frame
@@ -57,6 +71,9 @@ public class PlanetHUDScript : MonoBehaviour
 
         // --- Health Bar ---
         UpdateHealthIndicator();
+
+        // --- Polution Bar ---
+        UpdatePolutionIndicator();
     }
 
     public void PayButton()
@@ -94,5 +111,21 @@ public class PlanetHUDScript : MonoBehaviour
         healthSlider.value = planetHealth / 100;
 
         healthText.text = "Health: " + planetHealth.ToString() + " %";
+    }
+
+
+    public void UpdatePolutionIndicator()
+    {
+        float planetPolution = GameManager.PlanetList[GameManager.CurrentPlanetIndex].currentPolution;
+
+        float P = planetPolution / 360;
+
+        PolutionImage.color = Color.HSVToRGB(P, 1.0f, 1.0f);
+        PolutionImage_Back.color = Color.HSVToRGB(105.0f, 105.0f, 105.0f);
+        PolutionText.color = Color.HSVToRGB(P, 1.0f, 1.0f);
+        PolutionSlider.value = planetPolution / 100;
+        PolutionSlider_Back.value = 100;
+
+        PolutionText.text = "Polution: " + planetPolution.ToString() + " %";
     }
 }

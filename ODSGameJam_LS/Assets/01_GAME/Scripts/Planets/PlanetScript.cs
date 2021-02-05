@@ -13,7 +13,7 @@ public class PlanetScript : MonoBehaviour
 
     public int planetHealthRecoveryRate = 5;    //Health recovered per second
     public float currentHealth = 100.0f;             //Planet's health from 0 to 100
-
+    public float currentPolution = 0.0f;
      
 
     //Timers
