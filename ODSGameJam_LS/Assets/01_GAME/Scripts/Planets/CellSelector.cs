@@ -154,7 +154,9 @@ public class CellSelector : MonoBehaviour
             m_islandAnimation.Play();
             return;
         }
-        if (GameManager.CurrentResources < GameOptions.DestructionCost) {
+
+        int totalCost = Mathf.RoundToInt(GameOptions.DestructionCost * (1 + (GameOptions.FactoryCostIncrease * m_Planet.PlanetId)));
+        if (GameManager.CurrentResources < totalCost) {
             SoundsManager.PlaySound(SoundsManager.FailedConstructionSound);
             m_islandAnimation.Play();
             return;
@@ -183,7 +185,9 @@ public class CellSelector : MonoBehaviour
             m_islandAnimation.Play();
             return;
         }
-        if (GameManager.CurrentResources < GameOptions.StandardFactoryCost) {
+
+        int totalCost = Mathf.RoundToInt(GameOptions.StandardFactoryCost * (1 + (GameOptions.FactoryCostIncrease * m_Planet.PlanetId)));
+        if (GameManager.CurrentResources < totalCost) {
             SoundsManager.PlaySound(SoundsManager.FailedConstructionSound);
             m_islandAnimation.Play();
             return;
@@ -206,7 +210,9 @@ public class CellSelector : MonoBehaviour
             m_islandAnimation.Play();
             return;
         }
-        if (GameManager.CurrentResources < GameOptions.EcoFactoryCost) {
+
+        int totalCost = Mathf.RoundToInt(GameOptions.EcoFactoryCost * (1 + (GameOptions.FactoryCostIncrease * m_Planet.PlanetId)));
+        if (GameManager.CurrentResources < totalCost) {
             SoundsManager.PlaySound(SoundsManager.FailedConstructionSound);
             m_islandAnimation.Play();
             return;
