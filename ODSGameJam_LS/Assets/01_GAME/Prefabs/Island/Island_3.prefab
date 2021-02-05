@@ -499,6 +499,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bad_Smoke
       objectReference: {fileID: 0}
+    - target: {fileID: 1339976856367614523, guid: 74af2a72529436c47ae195ed23101075,
+        type: 3}
+      propertyPath: m_TagString
+      value: Decorations
+      objectReference: {fileID: 0}
     - target: {fileID: 4009629548451641270, guid: 74af2a72529436c47ae195ed23101075,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -598,6 +603,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Electricity (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6452182691639294162, guid: f6af69c73eed39046aaeff4d64f1ea6d,
+        type: 3}
+      propertyPath: m_TagString
+      value: Decorations
       objectReference: {fileID: 0}
     - target: {fileID: 6452182691639294175, guid: f6af69c73eed39046aaeff4d64f1ea6d,
         type: 3}
@@ -803,6 +813,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Car_Central
       objectReference: {fileID: 0}
+    - target: {fileID: 2917978200447881906, guid: 460cb2efdd6404847ab2582db6baa95b,
+        type: 3}
+      propertyPath: m_TagString
+      value: Decorations
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 460cb2efdd6404847ab2582db6baa95b, type: 3}
 --- !u!4 &543360214037122210 stripped
@@ -822,6 +837,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Electricity
+      objectReference: {fileID: 0}
+    - target: {fileID: 6452182691639294162, guid: f6af69c73eed39046aaeff4d64f1ea6d,
+        type: 3}
+      propertyPath: m_TagString
+      value: Decorations
       objectReference: {fileID: 0}
     - target: {fileID: 6452182691639294175, guid: f6af69c73eed39046aaeff4d64f1ea6d,
         type: 3}
@@ -912,6 +932,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bad_Smoke (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1339976856367614523, guid: 74af2a72529436c47ae195ed23101075,
+        type: 3}
+      propertyPath: m_TagString
+      value: Decorations
       objectReference: {fileID: 0}
     - target: {fileID: 4009629548451641270, guid: 74af2a72529436c47ae195ed23101075,
         type: 3}
@@ -1013,6 +1038,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bad_Smoke (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1339976856367614523, guid: 74af2a72529436c47ae195ed23101075,
+        type: 3}
+      propertyPath: m_TagString
+      value: Decorations
+      objectReference: {fileID: 0}
     - target: {fileID: 4009629548451641270, guid: 74af2a72529436c47ae195ed23101075,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -1112,6 +1142,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Electricity (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6452182691639294162, guid: f6af69c73eed39046aaeff4d64f1ea6d,
+        type: 3}
+      propertyPath: m_TagString
+      value: Decorations
       objectReference: {fileID: 0}
     - target: {fileID: 6452182691639294175, guid: f6af69c73eed39046aaeff4d64f1ea6d,
         type: 3}
