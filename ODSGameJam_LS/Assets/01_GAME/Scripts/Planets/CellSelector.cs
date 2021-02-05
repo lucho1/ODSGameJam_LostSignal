@@ -35,7 +35,7 @@ public class CellSelector : MonoBehaviour
     GameObject m_treesObject;
     GameObject m_factoryObject;
     GameObject m_ecoObject;
-    Material m_groundMaterial;
+    GameObject m_groundObject;
 
     GameManager.TypeOfConstruction Construction = GameManager.TypeOfConstruction.None;
 
@@ -43,6 +43,7 @@ public class CellSelector : MonoBehaviour
     void Start() {
         m_Planet = GetComponentInParent<PlanetScript>();
         m_Planet.planetDeath.AddListener(OnPlanetDeath);
+        m_Planet.planetContaminationChanged.AddListener(OnContaminationChanged);
 
         type = (TypeOfCell)Random.Range(0,4);
 
@@ -132,7 +133,7 @@ public class CellSelector : MonoBehaviour
             else if (c.CompareTag(EcoTag))
                 m_ecoObject = c.gameObject;
             else if (c.CompareTag(GroundTag))
-                m_groundMaterial = c.GetComponent<Material>();
+                m_groundObject = c.gameObject;
         }
 
         if (m_factoryObject)
@@ -231,6 +232,14 @@ public class CellSelector : MonoBehaviour
 
     void OnPlanetDeath() {
         isAlive = false;
+        m_treesObject.SetActive(false);
         //mTODO Sergi: Maybe disable smoke effects
+    }
+
+    void OnContaminationChanged() {
+        float myContamination = m_Planet.currentHealth == 0 ? 1 : 1 - (m_Planet.currentHealth/100);
+        Material m_material = m_groundObject.GetComponent<Renderer>().material;
+        if (m_material)
+            m_material.SetFloat("_Contamination", myContamination);
     }
 }
