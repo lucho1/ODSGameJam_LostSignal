@@ -36,7 +36,7 @@ public class PlanetHUDScript : MonoBehaviour
 
     private void Start()
     {
-        ColonizedPlanetsText.text = "Colonized Planets: " + GameManager.PlanetList.Count.ToString();
+        ColonizedPlanetsText.text = GameManager.PlanetList.Count.ToString();
 
         healthImage         = HealthIndicator.GetComponentInChildren<Image>();
         healthSlider        = HealthIndicator.GetComponent<Slider>();
@@ -144,7 +144,7 @@ public class PlanetHUDScript : MonoBehaviour
         {
             ResourcesManager.SubstractResources(GameOptions.PlanetCost);
             PlanetManager.CreatePlanet();
-            ColonizedPlanetsText.text = "Colonized Planets: " + GameManager.PlanetList.Count.ToString();
+            ColonizedPlanetsText.text = GameManager.PlanetList.Count.ToString();
         }
     }
 

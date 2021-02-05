@@ -44,7 +44,7 @@ public class DialogWindow : Singleton<DialogWindow>
     public static void ActivateDialog(string text)
     {
         Instance.dialog.text = text;
-        Instance.nameGO.SetActive(true);
+        //Instance.nameGO.SetActive(true);
         Instance.dialogGO.SetActive(true);
         Instance.imageGO.SetActive(true);
         Instance.closeButton.SetActive(true);
@@ -53,7 +53,7 @@ public class DialogWindow : Singleton<DialogWindow>
 
     public static void DeactivateDialog()
     {
-        Instance.nameGO.SetActive(false);
+        //Instance.nameGO.SetActive(false);
         Instance.dialogGO.SetActive(false);
         Instance.imageGO.SetActive(false);
         Instance.closeButton.SetActive(false);
