@@ -35,6 +35,10 @@ public class PlanetScript : MonoBehaviour
 
     [System.NonSerialized]
     public int PlanetId;
+    [System.NonSerialized]
+    public int MaxGround;
+    [System.NonSerialized]
+    public int GroundSpawned;
 
     //UI
     //public GameObject healthIndicator;
@@ -44,6 +48,7 @@ public class PlanetScript : MonoBehaviour
 
     private void Awake()
     {
+        MaxGround = Random.Range(5, 8);
         PlanetId = GameManager.PlanetList.Count;
         GameManager.PlanetList.Add(this);
     }
