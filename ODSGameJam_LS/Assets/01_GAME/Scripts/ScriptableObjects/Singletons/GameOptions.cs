@@ -179,6 +179,18 @@ public class GameOptions : ScriptableObject
     }
 
     [SerializeField]
+    private int m_planetRegenationRefresh;
+    public static int PlanetRegenerationRefresh {
+        get {
+            return Instance.m_planetRegenationRefresh;
+        }
+        set {
+            Instance.m_planetRegenationRefresh = value;
+        }
+    }
+
+
+    [SerializeField]
     private float m_refreshRate;
     public static float RefreshRate {
         get {

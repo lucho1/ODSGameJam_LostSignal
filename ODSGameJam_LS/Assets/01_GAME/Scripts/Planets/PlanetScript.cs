@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class PlanetScript : MonoBehaviour
 {
@@ -14,9 +14,13 @@ public class PlanetScript : MonoBehaviour
     public int planetHealthRecoveryRate = 5;    //Health recovered per second
     public float currentHealth = 100.0f;             //Planet's health from 0 to 100
     public float currentPolution = 0.0f;
-     
+    public bool planetAlive = true;
+
+    //Events
+    public UnityEvent planetDeath;
 
     //Timers
+    private SimpleTimer healthRegenTimer;
     public float resourceUpdatePeriod = 1.0f;   //Every x seconds the resources produced by this planet will be updated on the resource manager
     private float lastResourceUpdateTime = 0.0f;
     private int resourcesIncome = 0;
@@ -56,6 +60,8 @@ public class PlanetScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        healthRegenTimer.Duration = GameOptions.PlanetRegenerationRefresh;
+        healthRegenTimer.Begin();
         camera = GameObject.Find("Main Camera").GetComponent<Camera>();
         minCameraDistane = (transform.position - CameraPosition.transform.position).magnitude*0.75f;
         maxCameraDistane = (transform.position - CameraPosition.transform.position).magnitude * 1.5f;
@@ -63,13 +69,10 @@ public class PlanetScript : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
+    {     
 
-        if (Time.time - lastResourceUpdateTime > resourceUpdatePeriod)
-        {
-            lastResourceUpdateTime = Time.time;
-            //Update resources on the thing
-        }
+        if (planetAlive)
+            UpdateHealth();
 
         //update camera rotation if the planet is being looked at
         if (cameraAttached)
@@ -90,6 +93,24 @@ public class PlanetScript : MonoBehaviour
             if (!rotatingPlanet)
                 UpdateSpeed();
         }
+    }
+
+    private void UpdateHealth() 
+    {
+        if (currentHealth > 0) {
+            if (healthRegenTimer.Finished()) {
+                healthRegenTimer.Begin();
+                currentHealth += GameOptions.PlanetRegeneration;
+                if (currentHealth > 100)
+                    currentHealth = 100;
+            }
+        }
+        else {
+            currentHealth = 0;
+            planetAlive = false;
+            planetDeath.Invoke();
+        }
+
     }
 
     private void RotatePlanet()

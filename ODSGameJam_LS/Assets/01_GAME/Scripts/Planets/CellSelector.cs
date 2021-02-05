@@ -25,6 +25,7 @@ public class CellSelector : MonoBehaviour
 
     TypeOfCell type;
     bool isWater;
+    bool isAlive = true;
     PlanetScript m_Planet;
 
     GameObject m_islandObject;
@@ -38,6 +39,8 @@ public class CellSelector : MonoBehaviour
     // Start is called before the first frame update
     void Start() {
         m_Planet = GetComponentInParent<PlanetScript>();
+        m_Planet.planetDeath.AddListener(OnPlanetDeath);
+
         type = (TypeOfCell)Random.Range(0,4);
 
         if (m_Planet && m_Planet.GroundSpawned < m_Planet.MaxGround)
@@ -88,6 +91,11 @@ public class CellSelector : MonoBehaviour
     }
 
     void OnMouseDown() {
+        if (!isAlive) {
+            SoundsManager.PlaySound(SoundsManager.FailedConstructionSound);
+            return;
+        }
+
         switch (GameManager.SelectedConstruction) {
             default:
                 SoundsManager.PlaySound(SoundsManager.FailedConstructionSound);
@@ -201,5 +209,10 @@ public class CellSelector : MonoBehaviour
         Construction = GameManager.TypeOfConstruction.EcoFactory;
         m_islandAnimation.Play();
         SoundsManager.PlaySound(SoundsManager.ConstructionSound);
+    }
+
+    void OnPlanetDeath() {
+        isAlive = false;
+        //mTODO Sergi: Maybe disable smoke effects
     }
 }
