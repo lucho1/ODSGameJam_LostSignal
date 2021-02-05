@@ -12,10 +12,10 @@ public class PlanetHUDScript : MonoBehaviour
     private Text PayTimerText, CurrentResources, ResourcesToPay;
 
     [SerializeField]
-    private Text ColonizedPlanetsText, PopUpText_Obj;
+    private Text ColonizedPlanetsText, PopUpText_Obj, planetNumber;
 
     [SerializeField]
-    private GameObject NextPlanetBtn, PrevPlanetBtn, HealthIndicator, PolutionIndicator;
+    private GameObject NextPlanetBtn, PrevPlanetBtn, HealthIndicator, PolutionIndicator, planetNumberObj;
 
     private Image   healthImage;
     private Slider  healthSlider;
@@ -50,6 +50,7 @@ public class PlanetHUDScript : MonoBehaviour
         PolutionText        = PolutionIndicator.GetComponentInChildren<Text>();
 
         PopUpText           = PopUpText_Obj.GetComponent<Text>();
+        planetNumber        = planetNumberObj.GetComponent<Text>();
 
         InvokeRepeating("SumResources", 1.0f, 0.7f);
    
@@ -111,6 +112,9 @@ public class PlanetHUDScript : MonoBehaviour
 
         // ---PopUpText ---
         PopUpText.color = new Color(PopUpText.color.r, PopUpText.color.g, PopUpText.color.b, PopUpText.color.a - 0.5f*Time.deltaTime);
+
+        // ---planet number
+        planetNumber.text = "planet: " + GameManager.CurrentPlanetIndex.ToString();
     }
 
     public void PayButton()
