@@ -321,7 +321,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -29.3}
+  m_AnchoredPosition: {x: 0, y: -65.59}
   m_SizeDelta: {x: 16.64627, y: 19.637863}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &81863544
@@ -381,7 +381,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: e3265ab4bf004d28a9537516768c1c75, type: 3}
     m_FontSize: 14
     m_FontStyle: 1
     m_BestFit: 1
@@ -440,19 +440,35 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: e3265ab4bf004d28a9537516768c1c75, type: 3}
     m_FontSize: 14
-    m_FontStyle: 2
+    m_FontStyle: 1
     m_BestFit: 1
     m_MinSize: 10
     m_MaxSize: 14
-    m_Alignment: 4
+    m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Explanation 2
+  m_Text: 'Controls
+
+
+
+    Orbit Planets - WASD/Right Click
+
+
+    Switch Planets
+    - Left/Riht Arrows or Side-Buttons
+
+
+
+
+    Build, Send Resources to Save The
+    Earth and Colonize other  planets with the buttons on the HUD
+
+'
 --- !u!222 &113657835
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -477,8 +493,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 120.7}
-  m_SizeDelta: {x: 316.414, y: 30}
+  m_AnchoredPosition: {x: 0, y: 27.26}
+  m_SizeDelta: {x: 316.414, y: 216.88246}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &253317932
 GameObject:
@@ -1034,8 +1050,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 120.7}
-  m_SizeDelta: {x: 316.414, y: 30}
+  m_AnchoredPosition: {x: 0, y: 27.26}
+  m_SizeDelta: {x: 316.414, y: 216.88246}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &644458312
 MonoBehaviour:
@@ -1057,19 +1073,27 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: e3265ab4bf004d28a9537516768c1c75, type: 3}
     m_FontSize: 14
-    m_FontStyle: 2
+    m_FontStyle: 1
     m_BestFit: 1
     m_MinSize: 10
-    m_MaxSize: 14
-    m_Alignment: 4
+    m_MaxSize: 54
+    m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Explanation
+  m_Text: "Hi Victoria!\nYou\u2019ve been selected for the mission of Project: Rebirth.
+    Our planet is dying and we need to gather X resources to make the radical changes
+    needed to revert this situation D:\n\nWe can still build factories but that will
+    make our planet get worse and won\u2019t give us the necessary resources. We
+    have to change our production system to make affordable the construction of Ecological
+    Factories.\r\nWe can also colonize other planets to expand our production system,
+    but don\u2019t make the error we made in The Earth: don\u2019t fill planets with
+    polluting factories.\r\n\n\nGood Luck, we are on your hands! The humanity is
+    in your hands!\r\n"
 --- !u!222 &644458313
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2093,7 +2117,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -29.300007}
+  m_AnchoredPosition: {x: 0, y: -65.59}
   m_SizeDelta: {x: 16.64627, y: 19.637833}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1208815986
@@ -2348,6 +2372,7 @@ GameObject:
   - component: {fileID: 1341424469}
   - component: {fileID: 1341424468}
   - component: {fileID: 1341424467}
+  - component: {fileID: 1341424470}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2420,6 +2445,37 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1341424470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1341424466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
 --- !u!1 &1366580429
 GameObject:
   m_ObjectHideFlags: 0
