@@ -4030,7 +4030,7 @@ MonoBehaviour:
   PrevPlanetBtn: {fileID: 7010791659161779819}
   HealthIndicator: {fileID: 7010791660218224163}
   PolutionIndicator: {fileID: 3897254289697658863}
-  planetNumberObj: {fileID: 7010791660304808127}
+  planetNumberObj: {fileID: 279432037771543603}
 --- !u!114 &5336623146053998284
 MonoBehaviour:
   m_ObjectHideFlags: 0
