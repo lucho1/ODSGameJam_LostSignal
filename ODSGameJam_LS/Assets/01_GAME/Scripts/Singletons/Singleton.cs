@@ -49,16 +49,22 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
             }
         }
     }
+
+    private void Awake() {
+        m_ShuttingDown = false;
+    }
  
  
     private void OnApplicationQuit()
     {
         m_ShuttingDown = true;
+        m_Instance = null;
     }
  
  
     private void OnDestroy()
     {
         m_ShuttingDown = true;
+        m_Instance = null;
     }
 }
