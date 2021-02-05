@@ -15,7 +15,7 @@ public class PlanetHUDScript : MonoBehaviour
     private Text ColonizedPlanetsText, PopUpText_Obj, planetNumber;
 
     [SerializeField]
-    private GameObject NextPlanetBtn, PrevPlanetBtn, HealthIndicator, PolutionIndicator, planetNumberObj;
+    private GameObject NextPlanetBtn, PrevPlanetBtn, HealthIndicator, PolutionIndicator, planetNumberObj, DeadPlanetIndicator;
 
     private Image   healthImage;
     private Slider  healthSlider;
@@ -51,6 +51,8 @@ public class PlanetHUDScript : MonoBehaviour
 
         PopUpText           = PopUpText_Obj.GetComponent<Text>();
         planetNumber        = planetNumberObj.GetComponent<Text>();
+
+        PlanetManager.ChangedPlanet.AddListener(PlanetChanged);
 
         InvokeRepeating("SumResources", 1.0f, 0.7f);
    
@@ -157,6 +159,12 @@ public class PlanetHUDScript : MonoBehaviour
         healthSlider.value = planetHealth / 100;
 
         healthText.text = "Health: " + planetHealth.ToString("0.##") + " %";
+
+        if (planetHealth == 0) {
+            HealthIndicator.SetActive(false);
+            DeadPlanetIndicator.SetActive(true);
+        }
+
     }
 
 
@@ -178,5 +186,16 @@ public class PlanetHUDScript : MonoBehaviour
     public void LeaveGame()
     {
         GameManager.FinishGame(false);
+    }
+
+    public void PlanetChanged() {
+        if (GameManager.PlanetList[GameManager.CurrentPlanetIndex].currentHealth == 0) {
+            HealthIndicator.SetActive(false);
+            DeadPlanetIndicator.SetActive(true);
+        }
+        else {
+            HealthIndicator.SetActive(true);
+            DeadPlanetIndicator.SetActive(false);
+        }
     }
 }
