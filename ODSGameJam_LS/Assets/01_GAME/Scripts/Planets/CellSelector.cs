@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections.Generic;
 
 public class CellSelector : MonoBehaviour
 {
@@ -24,6 +25,8 @@ public class CellSelector : MonoBehaviour
     public string EcoTag;
     [TagSelector]
     public string GroundTag;
+    [TagSelector]
+    public string DecorationTag;
 
     TypeOfCell type;
     bool isWater;
@@ -36,6 +39,8 @@ public class CellSelector : MonoBehaviour
     GameObject m_factoryObject;
     GameObject m_ecoObject;
     GameObject m_groundObject;
+    List<GameObject> m_decorations;
+
 
     static bool firstFactory, firstEco, firstDestroy = false;
 
@@ -43,6 +48,7 @@ public class CellSelector : MonoBehaviour
 
     // Start is called before the first frame update
     void Start() {
+        m_decorations = new List<GameObject>();
         m_Planet = GetComponentInParent<PlanetScript>();
         m_Planet.planetDeath.AddListener(OnPlanetDeath);
         m_Planet.planetContaminationChanged.AddListener(OnContaminationChanged);
@@ -136,6 +142,8 @@ public class CellSelector : MonoBehaviour
                 m_ecoObject = c.gameObject;
             else if (c.CompareTag(GroundTag))
                 m_groundObject = c.gameObject;
+            else if (c.CompareTag(DecorationTag))
+                m_decorations.Add(c.gameObject);
         }
 
         if (m_factoryObject)
@@ -251,6 +259,8 @@ public class CellSelector : MonoBehaviour
         isAlive = false;
         m_treesObject.SetActive(false);
         //mTODO Sergi: Maybe disable smoke effects
+        foreach (GameObject decoration in m_decorations)
+            decoration.SetActive(false);
     }
 
     void OnContaminationChanged() {

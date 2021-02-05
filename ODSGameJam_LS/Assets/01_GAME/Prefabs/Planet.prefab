@@ -40,6 +40,7 @@ MonoBehaviour:
   FactoryTag: Factory
   EcoTag: EcoFactory
   GroundTag: Ground
+  DecorationTag: Decorations
 --- !u!64 &7112778318966683095
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -80,6 +81,7 @@ MonoBehaviour:
   FactoryTag: Factory
   EcoTag: EcoFactory
   GroundTag: Ground
+  DecorationTag: Decorations
 --- !u!1 &1315256139529305145
 GameObject:
   m_ObjectHideFlags: 0
@@ -150,6 +152,7 @@ MonoBehaviour:
   FactoryTag: Factory
   EcoTag: EcoFactory
   GroundTag: Ground
+  DecorationTag: Decorations
 --- !u!64 &2033680311353322358
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -190,6 +193,7 @@ MonoBehaviour:
   FactoryTag: Factory
   EcoTag: EcoFactory
   GroundTag: Ground
+  DecorationTag: Decorations
 --- !u!1 &2035206669228094059
 GameObject:
   m_ObjectHideFlags: 0
@@ -5117,6 +5121,7 @@ MonoBehaviour:
   FactoryTag: Factory
   EcoTag: EcoFactory
   GroundTag: Ground
+  DecorationTag: Decorations
 --- !u!64 &3738427960152934926
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5157,6 +5162,7 @@ MonoBehaviour:
   FactoryTag: Factory
   EcoTag: EcoFactory
   GroundTag: Ground
+  DecorationTag: Decorations
 --- !u!1 &4626807682785575784
 GameObject:
   m_ObjectHideFlags: 0
@@ -10117,6 +10123,7 @@ MonoBehaviour:
   FactoryTag: Factory
   EcoTag: EcoFactory
   GroundTag: Ground
+  DecorationTag: Decorations
 --- !u!1 &6655690926718881193
 GameObject:
   m_ObjectHideFlags: 0
@@ -10384,6 +10391,7 @@ MonoBehaviour:
   FactoryTag: Factory
   EcoTag: EcoFactory
   GroundTag: Ground
+  DecorationTag: Decorations
 --- !u!1 &7223015370203824838
 GameObject:
   m_ObjectHideFlags: 0
@@ -10484,6 +10492,7 @@ MonoBehaviour:
   FactoryTag: Factory
   EcoTag: EcoFactory
   GroundTag: Ground
+  DecorationTag: Decorations
 --- !u!1 &7402253523207861714
 GameObject:
   m_ObjectHideFlags: 0
@@ -10687,6 +10696,7 @@ MonoBehaviour:
   FactoryTag: Factory
   EcoTag: EcoFactory
   GroundTag: Ground
+  DecorationTag: Decorations
 --- !u!64 &2269100803172311745
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -10727,6 +10737,7 @@ MonoBehaviour:
   FactoryTag: Factory
   EcoTag: EcoFactory
   GroundTag: Ground
+  DecorationTag: Decorations
 --- !u!64 &3742468742695163793
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -10767,6 +10778,7 @@ MonoBehaviour:
   FactoryTag: Factory
   EcoTag: EcoFactory
   GroundTag: Ground
+  DecorationTag: Decorations
 --- !u!1001 &328797974781146560
 PrefabInstance:
   m_ObjectHideFlags: 0
