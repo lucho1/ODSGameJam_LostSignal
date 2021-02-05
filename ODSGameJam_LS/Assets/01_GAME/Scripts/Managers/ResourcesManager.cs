@@ -1,4 +1,4 @@
-﻿
+﻿using UnityEngine;
 /*
 
 This script is suposed to manage global data: Resources for example 
@@ -43,7 +43,7 @@ public class ResourcesManager : Singleton<ResourcesManager>
     {
         GameManager.CurrentResources = Instance.resources;
         if (DebtTimer.Finished()) {
-            AddDebt(GameOptions.IncreasedDebt);
+            AddDebt(Mathf.RoundToInt(GameManager.CurrentDebt * GameOptions.IncreasedDebt));
             DebtTimer.Begin();
         }
     }
