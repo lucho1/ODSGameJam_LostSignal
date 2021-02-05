@@ -154,7 +154,7 @@ public class PlanetHUDScript : MonoBehaviour
 
         float h = planetHealth / 360;// h = 100 --> green ,  h =0 --> red
 
-        healthImage.color = Color.HSVToRGB(h, 1.0f, 1.0f);
+        //healthImage.color = Color.HSVToRGB(h, 1.0f, 1.0f);
         healthText.color = Color.HSVToRGB(h, 1.0f, 1.0f);
         healthSlider.value = planetHealth / 100;
 
