@@ -31,15 +31,21 @@ public class CellSelector : MonoBehaviour
     GameObject m_treesObject;
     GameObject m_factoryObject;
     GameObject m_ecoObject;
+
+    GameManager.TypeOfConstruction Construction = GameManager.TypeOfConstruction.None;
+
     // Start is called before the first frame update
     void Start() {
         m_Planet = GetComponentInParent<PlanetScript>();
-        type = (TypeOfCell)Random.Range(0,3);
+        type = (TypeOfCell)Random.Range(0,4);
 
         if (m_Planet && m_Planet.GroundSpawned < m_Planet.MaxGround)
         {
             float Throw = Random.Range(0.0f,100.0f);
-            isWater = Throw > 50.0f;
+            if ((m_Planet.GroundSpawned + 1) % 2 == 0)
+                isWater = Throw > 20.0f;
+            else
+                isWater = Throw > 80.0f;
 
             if (!isWater)
                 ++m_Planet.GroundSpawned;
@@ -80,6 +86,24 @@ public class CellSelector : MonoBehaviour
             GameManager.CurrentSelectedCell = null;
     }
 
+    void OnMouseDown() {
+        switch (GameManager.SelectedConstruction) {
+            default:
+            //Play sound maybe
+            break;
+            case GameManager.TypeOfConstruction.Destroy:
+                DestroyBuiltFactory();
+                break;
+            case GameManager.TypeOfConstruction.Factory:
+                BuildFactory();
+                break;
+            case GameManager.TypeOfConstruction.EcoFactory:
+                BuildEcoFactory();
+                break;
+
+        }
+    }
+
     void SetupPrefab() {
         if (!m_islandObject)
             return;
@@ -105,5 +129,72 @@ public class CellSelector : MonoBehaviour
             
             m_islandObject.SetActive(false);
         }
+    }
+
+    void DestroyBuiltFactory() {
+        if (Construction == GameManager.TypeOfConstruction.None) {
+            //Play failure sound or smth
+            return;
+        }
+        if (GameManager.CurrentResources < GameOptions.DestructionCost) {
+            //Play failure sound or smth
+            return;
+        }
+
+        ResourcesManager.SubstractResources(GameOptions.DestructionCost);
+        
+        m_ecoObject.SetActive(false);
+        m_factoryObject.SetActive(false);
+
+        if (isWater) {
+            m_islandObject.SetActive(false);
+        }
+        else {
+            m_treesObject.SetActive(true);
+        }
+        Construction = GameManager.TypeOfConstruction.None;
+        
+    }
+
+    void BuildFactory() {
+        if (Construction == GameManager.TypeOfConstruction.Factory) {
+            //Play failure sound or smth
+            return;
+        }
+        if (GameManager.CurrentResources < GameOptions.StandardFactoryCost) {
+            //Play failure sound or smth
+            return;
+        }
+
+        ResourcesManager.SubstractResources(GameOptions.StandardFactoryCost);
+
+        m_islandObject.SetActive(true);
+        m_ecoObject.SetActive(false);
+        m_treesObject.SetActive(false);
+        m_factoryObject.SetActive(true);
+        Construction = GameManager.TypeOfConstruction.Factory;
+
+        
+    }
+
+    void BuildEcoFactory() {
+        if (Construction == GameManager.TypeOfConstruction.EcoFactory) {
+            //Play failure sound or smth
+            return;
+        }
+        if (GameManager.CurrentResources < GameOptions.EcoFactoryCost) {
+            //Play failure sound or smth
+            return;
+        }
+
+        ResourcesManager.SubstractResources(GameOptions.EcoFactoryCost);
+
+        m_islandObject.SetActive(true);
+        m_factoryObject.SetActive(false);
+        m_treesObject.SetActive(true);
+        m_ecoObject.SetActive(true);
+        Construction = GameManager.TypeOfConstruction.EcoFactory;
+
+        
     }
 }
